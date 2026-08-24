@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Matthew Ralph — Portfolio">
+  <section class="hero shell">
+    <p class="eyebrow">Portfolio</p>
+    <h1>Matthew Ralph</h1>
+    <p class="lead">Business systems and AI transformation operator focused on governed workflows, technical-program direction, and operational systems.</p>
+  </section>
+
+  <section class="shell work-section" aria-labelledby="selected-work">
+    <div class="section-intro">
+      <p class="eyebrow">Selected work</p>
+      <h2 id="selected-work">Systems designed for accountable progress.</h2>
+    </div>
+    <div class="project-grid">
+      <ProjectCard title="Job Opportunity Engine" label="Private system" description="Governed local-first workflows for job collection, evaluation, and application preparation." href={`${base}/work/job-opportunity-engine/`} />
+      <ProjectCard title="Response Flow Systems" label="In development" description="A business workflow system exploring human-supervised approaches to lead-response leakage." href={`${base}/work/response-flow-systems/`} />
+    </div>
+  </section>
+</BaseLayout>

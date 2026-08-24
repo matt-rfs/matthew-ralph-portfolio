@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Matthew Ralph — business systems and AI transformation." } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const home = `${base}/`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="shell nav-wrap">
+        <a class="wordmark" href={home} aria-label="Matthew Ralph home">MR<span>.</span></a>
+        <nav aria-label="Primary navigation">
+          <a href={home}>Home</a>
+          <a href={`${base}/work/job-opportunity-engine/`}>Work</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="shell footer-wrap">
+        <span>Matthew Ralph</span>
+        <span>Portfolio — V0.1</span>
+      </div>
+    </footer>
+  </body>
+</html>
