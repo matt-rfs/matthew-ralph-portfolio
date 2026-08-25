@@ -1,25 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-
 const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="Matthew Ralph — Portfolio">
-  <section class="hero shell">
-    <p class="eyebrow">Portfolio</p>
-    <h1>Matthew Ralph</h1>
-    <p class="lead">Business systems and AI transformation operator focused on governed workflows, technical-program direction, and operational systems.</p>
-  </section>
-
-  <section class="shell work-section" aria-labelledby="selected-work">
-    <div class="section-intro">
-      <p class="eyebrow">Selected work</p>
-      <h2 id="selected-work">Systems designed for accountable progress.</h2>
-    </div>
-    <div class="project-grid">
-      <ProjectCard title="Job Opportunity Engine" label="Private system" description="Governed local-first workflows for job collection, evaluation, and application preparation." href={`${base}/work/job-opportunity-engine/`} />
-      <ProjectCard title="Response Flow Systems" label="In development" description="A business workflow system exploring human-supervised approaches to lead-response leakage." href={`${base}/work/response-flow-systems/`} />
-    </div>
-  </section>
+  <section class="hero shell"><p class="eyebrow">Portfolio</p><h1>Matthew Ralph</h1><p class="lead">Business systems and AI transformation operator focused on governed workflows, technical-program direction, and operational systems.</p></section>
+  <section class="commercial-foundation shell" aria-labelledby="commercial-foundation-title"><div class="section-intro"><p class="eyebrow">Commercial foundation</p><h2 id="commercial-foundation-title">Commercial operator first. Systems work built on top.</h2></div><p class="commercial-intro">15+ years across commercial leadership, GTM, enablement, business development, client operations, and business-building inform Matthew’s current work in governed systems and AI transformation.</p><div class="commercial-grid"><article><p class="eyebrow">Enablement / adoption</p><strong>40% conversion improvement</strong><span>Contributed to a broader enablement program that improved conversion by 40% and reduced ramp time by 30%.</span></article><article><p class="eyebrow">Commercial scale</p><strong>$2.5M+ quarterly pipeline</strong><span>Supported $2.5M+ in quarterly pipeline through disciplined commercial process and performance visibility.</span></article><article><p class="eyebrow">Direct execution</p><strong>$2M+ recurring revenue</strong><span>Generated $2M+ in recurring revenue while increasing average deal size by 35%.</span></article><article><p class="eyebrow">Operating leadership</p><strong>56 employees · ~90% retention</strong><span>Co-founded and scaled Right Choice Security to 56 employees while maintaining approximately 90% client retention.</span></article></div></section>
+  <section class="shell work-section" aria-labelledby="selected-work"><div class="section-intro"><p class="eyebrow">Selected work</p><h2 id="selected-work">Systems designed for accountable progress.</h2></div><div class="project-grid"><ProjectCard title="Job Opportunity Engine" label="Private system" description="Governed local-first workflows for job collection, evaluation, and application preparation." href={`${base}/work/job-opportunity-engine/`} /><ProjectCard title="Response Flow Systems" label="Development-stage foundation" description="Governed workflow foundation for improving lead-response operations." href={`${base}/work/response-flow-systems/`} /></div></section>
 </BaseLayout>
