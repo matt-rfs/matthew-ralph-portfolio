@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import faviconUrl from "../assets/mr-mark.svg?url";
 
 interface Props {
   title: string;
@@ -9,6 +10,7 @@ interface Props {
 const { title, description = "Matthew Ralph — business systems and AI transformation." } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const home = `${base}/`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://matt-rfs.github.io").href;
 ---
 
 <!doctype html>
@@ -17,6 +19,14 @@ const home = `${base}/`;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href={faviconUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Matthew Ralph" />
+    <meta name="twitter:card" content="summary" />
     <title>{title}</title>
   </head>
   <body>
@@ -25,7 +35,9 @@ const home = `${base}/`;
         <a class="wordmark" href={home} aria-label="Matthew Ralph home">MR<span>.</span></a>
         <nav aria-label="Primary navigation">
           <a href={home}>Home</a>
-          <a href={`${base}/work/job-opportunity-engine/`}>Work</a>
+          <a href={`${base}/work/job-opportunity-engine/`}>JOE</a>
+          <a href={`${base}/work/response-flow-systems/`}>RFS</a>
+          <a href="https://github.com/matt-rfs/matthew-ralph-work-samples">Work samples</a>
         </nav>
       </div>
     </header>

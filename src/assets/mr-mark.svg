@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">MR.</title>
+  <rect width="64" height="64" rx="12" fill="#172121"/>
+  <text x="10" y="41" fill="#f7f7f3" font-family="Georgia, serif" font-size="27" font-weight="700" letter-spacing="-2">MR</text>
+  <circle cx="51" cy="42" r="4" fill="#205e58"/>
+</svg>
