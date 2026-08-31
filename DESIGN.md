@@ -15,6 +15,7 @@
 7. **Mobile is composed, not collapsed.** Reorder, stack, simplify diagrams, and adjust density deliberately; never require a laptop or horizontal scrolling.
 8. **Design never outruns evidence.** Visual force must not imply unsupported maturity.
 9. **Human judgment is visible.** Important tradeoffs, rejected options, failures, corrections, and authority boundaries must be discoverable.
+10. **Human authority is visible, not merely implied.** Where AI or automation participates materially, distinguish system execution, Matthew’s directed decisions, and final human authority.
 
 ## Typography and reading
 
