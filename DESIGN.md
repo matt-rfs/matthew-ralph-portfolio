@@ -2,7 +2,7 @@
 
 ## Positioning
 
-**Authored Systems Dossier**: an editorial publication (about 45%), executive operating brief (about 35%), and technical research dossier (about 20%). These are conceptual weights, not layout quotas. The result is calm, authored, deliberate, evidence-oriented, technically credible, commercially literate, contemporary, restrained, and human—not a generic AI startup.
+**Authored Systems Dossier V002 — Evidence Has Authority**: an editorial publication (about 45%), executive operating brief (about 35%), and technical field manual (about 20%). These are conceptual weights, not layout quotas. The result is calm, authored, deliberate, evidence-oriented, technically credible, commercially literate, contemporary, restrained, and human—not a generic AI startup.
 
 ## Principles
 
@@ -47,6 +47,18 @@ Dark panels are reserved for compact architecture or evidence where contrast imp
 Use more open narrative spacing on the homepage; purposeful section rhythm on flagship case studies; compact evidence density in focused technical proof; and extra breathing room around diagrams, decision records, comparisons, and validation blocks. Prefer plain ruled sections first. Use an evidence panel, comparison block, validation block, decision record, project card, technical-proof card, or callout only when its structure clarifies a real distinction. Avoid generic card proliferation.
 
 Diagrams answer a recruiter-readable question through clear sequence, restrained node count, visible boundaries, and visible human authority when relevant. Avoid giant implementation schemas and unnecessary notation. Provide a usable mobile fallback, usually by stacking or simplifying the sequence.
+
+## V002 wayfinding and chapter grammar
+
+**Navigation is a map, not a medal stand.** Every substantive recruiter-relevant public destination with its own route appears in primary navigation. Homepage composition—not navigation omission—communicates hierarchy. Desktop may use full names; compact visual labels may be used responsively only when descriptive accessible names remain available.
+
+Homepage chapters have different evidentiary jobs and may therefore use different density, scale, framing, and controlled value fields. Warm paper remains the base; pale evidence green, pale decision parchment, and ink fields may mark a meaningful conceptual transition. Do not alternate surfaces mechanically or use gradients.
+
+The recurring **Authority Ledger** is a ruled editorial annotation, used selectively where it clarifies: **System did / Matthew directed / Human authority remained**. It is not a component-library pattern or a substitute for the surrounding evidence.
+
+Projects retain family resemblance through explicit evidence, Matthew’s role, human authority, maturity, boundary, and public evidence routing. They avoid template monotony through distinct signatures: JOE evidence → state → decision; RFS custody → approval → response assurance; PIR CandidateClaim ≠ Claim; Reliability Lab evaluate → diagnose.
+
+V002 is bolder through hierarchy, typography, contrast, spatial rhythm, and authored evidence framing—not decoration. Each release requires deterministic validation and a subjective rendered critique at desktop, intermediate, and mobile widths; one bounded refinement pass may address issues discovered there before human publication review.
 
 ## Case-study and evidence grammar
 
