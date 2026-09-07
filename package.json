@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "verify:routes": "node scripts/verify-routes.mjs",
     "preview": "astro preview"
   },
   "devDependencies": {
