@@ -5,9 +5,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 <BaseLayout title="Job Opportunity Engine — Governed career operations" description="A private, local-first governed career-operations system for deterministic evaluation, evidence-bound preparation, and human review.">
   <article class="joe-case-study">
     <header class="joe-hero shell">
-      <p class="eyebrow">Case study · private system</p>
+      <p class="eyebrow">Case study · governed AI systems · career operations</p>
       <h1>Job Opportunity<br />Engine</h1>
-      <p class="joe-subtitle">Governed career operations for collection, deterministic evaluation, evidence-bound preparation, and human review.</p>
+      <p class="joe-subtitle">A working private career-operations system built to let AI contribute judgment without silently acquiring authority.</p>
       <div class="joe-hero-grid">
         <p class="joe-summary">A career workflow should not treat a persuasive sentence as candidate truth. Job Opportunity Engine is a private, local-first governed career-operations system spanning job collection, deterministic evaluation, evidence-bound preparation, private artifact custody, and human review.</p>
         <dl class="joe-facts"><div><dt>Role</dt><dd>Product architecture, governance, requirements, and technical-program direction</dd></div><div><dt>Current state</dt><dd>Private Python + SQLite implementation with preparation and review controls</dd></div></dl>
@@ -21,6 +21,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <article><p class="eyebrow">Verified</p><strong>222 / 222</strong><span>Passing automated tests at the latest clean public checkpoint.</span></article>
       <article><p class="eyebrow">Boundary</p><p>No autonomous submission, browser automation, production SaaS, or live model-backed generation.</p></article>
     </section>
+
+    <section class="joe-section joe-governance shell" aria-labelledby="truths-title"><div class="joe-section-label"><p class="eyebrow">02 · Three truths</p></div><div class="joe-section-body"><h2 id="truths-title">What may the model recommend—and what may it actually make true?</h2><p>As automation moved closer to consequential personal claims and application production, the architectural question changed. JOE keeps the sources of truth distinct before a decision can influence action.</p><div class="authority-grid" aria-label="Three Truths authority boundary"><div><strong>Job truth</strong><span>What is known about the external opportunity.</span></div><div><strong>Candidate truth</strong><span>What Matthew can actually support with evidence.</span></div><div><strong>Decision truth</strong><span>What the system and human concluded from those inputs.</span></div></div><p class="joe-note"><strong>Job truth ≠ Candidate truth ≠ Decision truth.</strong> AI may propose classification, matching, drafting, and recommendation. Authority must be granted through human input, evidence acceptance, review, approval, and any external action.</p></div></section>
 
     <section class="joe-section joe-problem shell" aria-labelledby="problem-title"><div class="joe-section-label"><p class="eyebrow">01 · The problem</p></div><div class="joe-section-body"><h2 id="problem-title">Useful automation begins with a trustworthy record of reality.</h2><p class="joe-lead">AI can quickly recommend roles or draft application language. The difficult part is ensuring that a recommendation, match, or generated claim is grounded in verified information and remains subject to human judgment.</p><div class="joe-principles"><p>What job is actually being considered?</p><p>What can be supported by candidate evidence?</p><p>Which gaps are material—and which are learnable?</p><p>What may be prepared, and what must remain a human decision?</p></div></div></section>
 
