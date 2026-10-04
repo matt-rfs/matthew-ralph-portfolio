@@ -83,6 +83,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 </div>
 <p class="joe-note">
 <strong>Job truth ≠ Candidate truth ≠ Decision truth.</strong> AI may propose classification, matching, drafting, and recommendation. Authority must be granted through human input, evidence acceptance, review, approval, and any external action.</p>
+<p class="joe-note"><strong>Official-looking URL ≠ verified Job Truth.</strong> JOE binds one first-party ATS verification path to immutable collector provenance, so an official-looking URL alone cannot establish current Job Truth. Discovery source ≠ verification authority; collected ≠ VERIFIED_LIVE.</p>
 </div>
 </section>
 
@@ -158,6 +159,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 <div class="joe-section-body">
 <h2 id="system-title">A controlled path from intake to human review.</h2>
 <p>The implemented core preserves context, preparation authority, and decision traceability—not an autonomous job-application agent.</p>
+<p class="joe-note">JOE exposes current workflow eligibility, blockers, and required human action through a local operator surface. The interface makes authority state legible; it does not turn UI availability into generation, provider, approval, or submission authority. The semantic presentation layer is deterministic and read-only.</p>
 <div class="workflow-diagram" role="img" aria-label="Current implemented workflow from intake through deterministic evaluation, frozen preparation, claim validation, private custody, and human review, with final submission marked outside runtime">
 <div class="workflow-row">
 <span>ATS / manual intake</span>
@@ -252,9 +254,26 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 </div>
 </section>
 
+    <section class="joe-section joe-governance shell" aria-labelledby="execution-authority-title">
+<div class="joe-section-label">
+<p class="eyebrow">06 · Execution authority</p>
+</div>
+<div class="joe-section-body">
+<h2 id="execution-authority-title">A human authorizes exact bytes—not a vague intention.</h2>
+<p>V1C-A implements authenticated exact-byte authority: immutable authorization binds the task, policy, attempt, provider, model, adapter, pricing authority, outbound SHA-256 digest, and exact byte count before a one-use transport claim may be made.</p>
+<div class="joe-principles">
+<p><strong>Human authorization</strong><br />An explicit, immutable decision begins the chain.</p>
+<p><strong>Exact request</strong><br />Digest and byte count bind what would leave the system.</p>
+<p><strong>Bounded transport</strong><br />Provider and model authority are request-bound and one-use.</p>
+<p><strong>Final check</strong><br />Replay, mutation, and stale authority are rejected before transport.</p>
+</div>
+<p class="joe-note"><strong>Implemented, not exercised live.</strong> No live provider inference, provider-backed generation, model spend, application submission, employer-system write, or autonomous approval is claimed. Generated ≠ artifact approved ≠ package approved ≠ submitted ≠ outcome.</p>
+</div>
+</section>
+
     <section class="joe-section joe-decisions shell" aria-labelledby="decisions-title">
 <div class="joe-section-label">
-<p class="eyebrow">06 · Design decisions</p>
+<p class="eyebrow">07 · Design decisions</p>
 </div>
 <div class="joe-section-body">
 <h2 id="decisions-title">The controls are the product.</h2>
@@ -337,7 +356,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     <section class="joe-section joe-walkthrough shell" aria-labelledby="walkthrough-title">
 <div class="joe-section-label">
-<p class="eyebrow">07 · Synthetic walkthrough</p>
+<p class="eyebrow">08 · Synthetic walkthrough</p>
 </div>
 <div class="joe-section-body">
 <h2 id="walkthrough-title">A fictional example of depth-aware matching.</h2>
@@ -363,7 +382,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     <section class="joe-section joe-validation shell" aria-labelledby="validation-title">
 <div class="joe-section-label">
-<p class="eyebrow">08 · Current state</p>
+<p class="eyebrow">09 · Current state</p>
 </div>
 <div class="joe-section-body">
 <h2 id="validation-title">Implemented as a private, local-first career-operations system.</h2>
@@ -408,7 +427,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
     <section class="joe-section joe-boundary shell" aria-labelledby="boundary-title">
 <div class="joe-section-label">
-<p class="eyebrow">09 · Scope boundary</p>
+<p class="eyebrow">10 · Scope boundary</p>
 </div>
 <div class="joe-section-body">
 <h2 id="boundary-title">Built for disciplined progress, not false autonomy.</h2>
