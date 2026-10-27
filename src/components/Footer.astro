@@ -1,6 +1,16 @@
 ---
 import { href } from '../lib/url';
 import { projects, contact, personal } from '../data/site';
+
+interface Props {
+  door?: string; // the front door this page is, so the footer offers the other two instead of a link to itself
+}
+const { door = '/' } = Astro.props;
+const [first, second] = [
+  { path: '/', label: 'sales leadership' },
+  { path: '/ai/', label: 'AI' },
+  { path: '/enablement/', label: 'enablement' },
+].filter((d) => d.path !== door);
 ---
 
 <footer class="foot" id="contact">
@@ -11,7 +21,7 @@ import { projects, contact, personal } from '../data/site';
       <p class="foot__line">{personal.offClock}</p>
       <!-- the same story with one role's work first, for people hiring for it -->
       <p class="foot__line foot__doors">
-        Hiring for <a href={href('/ai/')}>AI</a> or <a href={href('/enablement/')}>enablement</a>? Here’s the same story with that work first.
+        Hiring for <a href={href(first.path)}>{first.label}</a> or <a href={href(second.path)}>{second.label}</a>? Here’s the same story with that work first.
       </p>
     </div>
     <nav aria-label="Case studies">

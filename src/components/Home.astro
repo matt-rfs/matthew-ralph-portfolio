@@ -18,7 +18,7 @@ const BEAT_COUNT = moments.length + 3;
 const afterTour = door.workFirst ? '#answers' : '#work';
 ---
 
-<Base title={door.title} description={door.description} ogTitle={door.ogTitle} ogDescription={door.ogDescription} onHome>
+<Base title={door.title} description={door.description} ogTitle={door.ogTitle} ogDescription={door.ogDescription} door={door.path} onHome>
   <!-- One dark stage behind the page (studio.ts): the hero shows the instrument, the daylight sections slide over it,
        and the tour takes it apart. Without the 3D (phones, reduced motion, no WebGL) these are plain dark sections. -->
   <div class="stage" aria-hidden="true">

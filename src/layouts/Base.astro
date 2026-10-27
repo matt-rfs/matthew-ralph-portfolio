@@ -12,10 +12,11 @@ interface Props {
   description: string;
   current?: 'work';
   onHome?: boolean;
+  door?: string; // which front door this is (/, /ai/, /enablement/)
   ogTitle?: string;
   ogDescription?: string;
 }
-const { title, description, current, onHome = false, ogTitle = title, ogDescription = description } = Astro.props;
+const { title, description, current, onHome = false, door, ogTitle = title, ogDescription = description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
@@ -41,6 +42,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer door={door} />
   </body>
 </html>
