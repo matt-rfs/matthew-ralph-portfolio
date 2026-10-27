@@ -1,0 +1,312 @@
+---
+// Content ported from the existing public case study (text preserved; presentation adapted).
+import Case from '../../../layouts/Case.astro';
+
+const WS = 'https://github.com/matt-rfs/matthew-ralph-work-samples/blob/main/job-opportunity-engine';
+const evidence = [
+  { label: 'Evaluation walkthrough', href: `${WS}/synthetic-walkthrough.md`, where: 'GitHub' },
+  { label: 'Preparation lifecycle', href: `${WS}/preparation-lifecycle.md`, where: 'GitHub' },
+  { label: 'Design decisions', href: `${WS}/design-decisions.md`, where: 'GitHub' },
+  { label: 'Validation snapshot', href: `${WS}/validation-snapshot.md`, where: 'GitHub' },
+];
+const sections = [
+  { id: 'glance', name: 'At a glance' },
+  { id: 'truths', name: 'Three truths' },
+  { id: 'problem', name: 'The problem' },
+  { id: 'role', name: 'Matthew’s role' },
+  { id: 'model', name: 'Current system model' },
+  { id: 'governance', name: 'Governance model' },
+  { id: 'preparation', name: 'Preparation authority' },
+  { id: 'execution', name: 'Execution authority' },
+  { id: 'decisions', name: 'Design decisions' },
+  { id: 'walkthrough', name: 'Synthetic walkthrough' },
+  { id: 'state', name: 'Current state' },
+  { id: 'scope', name: 'Scope boundary' },
+];
+---
+
+<Case
+  slug="job-opportunity-engine"
+  name="Job Opportunity Engine"
+  dek="A working private career-operations system built to let AI contribute judgment without silently acquiring authority."
+  lead={[
+    'A career workflow should not treat a persuasive sentence as candidate truth. Job Opportunity Engine is a private, local-first governed career-operations system spanning job collection, deterministic evaluation, evidence-bound preparation, private artifact custody, and human review.',
+  ]}
+  facts={[
+    { k: 'Case study', v: 'Governed AI systems for career operations' },
+    { k: 'Role', v: 'Product architecture, governance, requirements, and technical-program direction' },
+    { k: 'Current state', v: 'Private Python + SQLite implementation with preparation and review controls' },
+  ]}
+  evidence={evidence}
+  ledger={{
+    did: 'Normalize, evaluate, preserve evidence, and prepare governed artifacts.',
+    directed: 'Operating model, evidence architecture, decision boundaries, and validation.',
+    human: 'Approval, candidate interpretation, and application decisions.',
+  }}
+  plain={{
+    problem: 'AI can find jobs and draft applications fast. The risk is a draft that claims something I can’t back up, or decisions that drift from one job to the next.',
+    built: 'A private system that collects openings, scores each one the same way, and drafts only from claims I can prove. I designed it and directed AI coding agents to build it in Python and SQLite.',
+    who: 'My own job search. The same pattern fits any team using AI to make recommendations people act on.',
+    proves: '222 of 222 automated tests pass at the public checkpoint, and nothing is submitted without my approval.',
+  }}
+  sections={sections}
+>
+  <section class="sec" id="glance" aria-labelledby="glance-h">
+    <h2 id="glance-h">At a glance</h2>
+    <div class="items items--cards">
+      <div><h3>Problem</h3><p>Job evaluation and preparation can drift into inconsistent decisions, unsupported claims, and weak evidence traceability.</p></div>
+      <div><h3>System</h3><p>Private, local-first governed career operations for collection, deterministic evaluation, evidence-bound preparation, private artifact custody, and human review.</p></div>
+      <div><h3>Verified</h3><p><b>222 / 222</b> passing automated tests at the latest clean public checkpoint.</p></div>
+      <div><h3>Boundary</h3><p>No autonomous submission, browser automation, production SaaS, or live model-backed generation.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="truths" aria-labelledby="truths-h">
+    <h2 id="truths-h">Three truths</h2>
+    <p class="sec__claim">What may the model recommend—and what may it actually make true?</p>
+    <div class="prose">
+      <p>As automation moved closer to consequential personal claims and application production, the architectural question changed. JOE keeps the sources of truth distinct before a decision can influence action.</p>
+    </div>
+    <div class="items">
+      <div><h3>Job truth</h3><p>What is known about the external opportunity.</p></div>
+      <div><h3>Candidate truth</h3><p>What Matthew can actually support with evidence.</p></div>
+      <div><h3>Decision truth</h3><p>What the system and human concluded from those inputs.</p></div>
+    </div>
+    <div class="note">
+      <p><b>Job truth ≠ Candidate truth ≠ Decision truth.</b> AI may propose classification, matching, drafting, and recommendation. Authority must be granted through human input, evidence acceptance, review, approval, and any external action.</p>
+    </div>
+    <div class="note">
+      <p><b>Official-looking URL ≠ verified Job Truth.</b> JOE binds one first-party ATS verification path to immutable collector provenance, so an official-looking URL alone cannot establish current Job Truth. Discovery source ≠ verification authority; collected ≠ VERIFIED_LIVE.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="problem" aria-labelledby="problem-h">
+    <h2 id="problem-h">The problem</h2>
+    <p class="sec__claim">Useful automation begins with a trustworthy record of reality.</p>
+    <div class="prose">
+      <p>AI can quickly recommend roles or draft application language. The difficult part is ensuring that a recommendation, match, or generated claim is grounded in verified information and remains subject to human judgment.</p>
+    </div>
+    <ul class="qlist">
+      <li>What job is actually being considered?</li>
+      <li>What can be supported by candidate evidence?</li>
+      <li>Which gaps are material—and which are learnable?</li>
+      <li>What may be prepared, and what must remain a human decision?</li>
+    </ul>
+  </section>
+
+  <section class="sec" id="role" aria-labelledby="role-h">
+    <h2 id="role-h">Matthew’s role</h2>
+    <p class="sec__claim">Directing the system, not claiming the keyboard.</p>
+    <div class="prose">
+      <p>Matthew Ralph defined the product and system architecture, requirements, decision boundaries, evidence/state models, governance, validation criteria, implementation direction, and human-review controls. His role is that of a business systems and AI transformation operator: translating a consequential workflow into governed software and an inspectable operating model.</p>
+    </div>
+    <ol class="flow flow--human" aria-label="Who does what">
+      <li>Matthew<small>Architecture, requirements, governance, validation</small></li>
+      <li>AI coding agents<small>Bounded implementation, inspection, testing, refinement</small></li>
+      <li>Deterministic system<small>Identity, evidence ownership, state, scoring, validation</small></li>
+      <li>Human control<small>Approval, claims, and external action</small></li>
+    </ol>
+    <div class="items">
+      <div><h3>Human authority</h3><p>Matthew’s role: Designed the operating model, evidence architecture, decision boundaries, validation strategy, and human-approval controls; directed bounded agent implementation and testing against those requirements.</p></div>
+      <div><h3>System / agents</h3><p>Deterministic validation and state tracking; bounded implementation, testing, and refinement; and surfacing evidence or conflict within repository and task constraints.</p></div>
+    </div>
+    <div class="twolists">
+      <div>
+        <h3>What required human judgment</h3>
+        <ul>
+          <li>Accept or reject evidence</li>
+          <li>Resolve ambiguous or stale state</li>
+          <li>Approve claims and preparation readiness</li>
+          <li>Decide whether external action may proceed</li>
+        </ul>
+      </div>
+    </div>
+    <div class="prose">
+      <p>AI coding agents performed substantial bounded implementation, inspection, testing, and refinement under repository controls and human review. They did not independently decide what was true, what the system could authorize, or when an external action should occur.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="model" aria-labelledby="model-h">
+    <h2 id="model-h">Current system model</h2>
+    <p class="sec__claim">A controlled path from intake to human review.</p>
+    <div class="prose">
+      <p>The implemented core preserves context, preparation authority, and decision traceability—not an autonomous job-application agent.</p>
+      <p>JOE exposes current workflow eligibility, blockers, and required human action through a local operator surface. The interface makes authority state legible; it does not turn UI availability into generation, provider, approval, or submission authority. The semantic presentation layer is deterministic and read-only.</p>
+    </div>
+    <ol class="flow" aria-label="Intake to evaluation">
+      <li>ATS / manual intake</li>
+      <li>Normalize + verify</li>
+      <li>Requirements</li>
+      <li>Evidence + capabilities</li>
+    </ol>
+    <ol class="flow" aria-label="Evaluation to preparation">
+      <li>Deterministic evaluation</li>
+      <li>Rank + gate</li>
+      <li>Preparation command</li>
+      <li>Frozen packet</li>
+    </ol>
+    <ol class="flow flow--human" aria-label="Preparation to human review">
+      <li>Claim validation</li>
+      <li>Private artifact custody</li>
+      <li>NEEDS_HUMAN / REVIEW_READY</li>
+      <li>Human review</li>
+    </ol>
+    <p class="flow-out"><b>Outside runtime:</b> broad external search automation · automated final submission</p>
+  </section>
+
+  <section class="sec" id="governance" aria-labelledby="governance-h">
+    <h2 id="governance-h">Governance model</h2>
+    <p class="sec__claim">AI proposes. Evidence proves. Humans approve.</p>
+    <div class="prose">
+      <p>Candidate evidence is canonical and profile-isolated. Capability assessments may be proposed, but an interpretation becomes eligible for matching only when it is supported by linked evidence and approved by a human.</p>
+    </div>
+    <ol class="flow" aria-label="Governance steps">
+      <li>Career evidence<small>Source material stays distinct from generated language.</small></li>
+      <li>Governed assessment<small>Capability interpretation is tied to appropriate evidence.</small></li>
+      <li>Human approval<small>Authority is explicit, rather than inferred from a model output.</small></li>
+      <li>Eligible matching<small>Only approved evidence may inform evaluation or preparation.</small></li>
+    </ol>
+  </section>
+
+  <section class="sec" id="preparation" aria-labelledby="preparation-h">
+    <h2 id="preparation-h">Preparation authority</h2>
+    <p class="sec__claim">Preparation cannot silently drift from its verified basis.</p>
+    <div class="prose">
+      <p>An eligible opportunity enters preparation through deterministic checks. The system freezes the job, evaluation, approved evidence, capability, and resume-baseline basis into an authoritative packet; proposed claims are validated against that basis before private artifacts can reach a review state.</p>
+    </div>
+    <div class="items">
+      <div><h3>Frozen packet</h3><p>The reviewed basis is explicit rather than reconstructed later.</p></div>
+      <div><h3>Visible divergence</h3><p>Changed underlying state sends preparation back to human reconciliation.</p></div>
+      <div><h3>Private custody</h3><p>Artifacts and lineage stay private and profile-scoped.</p></div>
+      <div><h3>Review states</h3><p>NEEDS_HUMAN and REVIEW_READY do not authorize submission.</p></div>
+    </div>
+    <div class="prose">
+      <p>JOE also includes a candidate-scoped local review interface for inspecting jobs, evaluations, preparation state, supporting explanations, and review status. It is validated with synthetic tests; it is not a production SaaS.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="execution" aria-labelledby="execution-h">
+    <h2 id="execution-h">Execution authority</h2>
+    <p class="sec__claim">A human authorizes exact bytes—not a vague intention.</p>
+    <div class="prose">
+      <p>V1C-A implements authenticated exact-byte authority: immutable authorization binds the task, policy, attempt, provider, model, adapter, pricing authority, outbound SHA-256 digest, and exact byte count before a one-use transport claim may be made.</p>
+    </div>
+    <ol class="flow" aria-label="Authorization chain">
+      <li>Human authorization<small>An explicit, immutable decision begins the chain.</small></li>
+      <li>Exact request<small>Digest and byte count bind what would leave the system.</small></li>
+      <li>Bounded transport<small>Provider and model authority are request-bound and one-use.</small></li>
+      <li>Final check<small>Replay, mutation, and stale authority are rejected before transport.</small></li>
+    </ol>
+    <div class="note note--boundary">
+      <p><b>Implemented, not exercised live.</b> No live provider inference, provider-backed generation, model spend, application submission, employer-system write, or autonomous approval is claimed. Generated ≠ artifact approved ≠ package approved ≠ submitted ≠ outcome.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="decisions" aria-labelledby="decisions-h">
+    <h2 id="decisions-h">Design decisions</h2>
+    <p class="sec__claim">The controls are the product.</p>
+    <div class="decisions">
+      <article class="decision">
+        <h3>Generated output is not authoritative evidence</h3>
+        <dl>
+          <div><dt>Why</dt><dd>A polished résumé bullet or application draft does not become true simply because a system generated it.</dd></div>
+          <div><dt>Risk prevented</dt><dd>Unsupported claims being treated as candidate truth.</dd></div>
+          <div><dt>Consequence</dt><dd>Claims remain traceable to governed evidence.</dd></div>
+        </dl>
+      </article>
+      <article class="decision">
+        <h3>Technical fluency is not software-engineering identity</h3>
+        <dl>
+          <div><dt>Why</dt><dd>The model distinguishes technical or program ownership from hands-on production implementation.</dd></div>
+          <div><dt>Risk prevented</dt><dd>Flattering but unsupported capability inflation.</dd></div>
+          <div><dt>Consequence</dt><dd>Systems or program evidence does not automatically establish software-engineering evidence.</dd></div>
+        </dl>
+      </article>
+      <article class="decision">
+        <h3>Application state and outcome are distinct</h3>
+        <dl>
+          <div><dt>Why</dt><dd>A submission remains a submission even when a later outcome is rejection.</dd></div>
+          <div><dt>Risk prevented</dt><dd>Loss of lifecycle integrity.</dd></div>
+          <div><dt>Consequence</dt><dd>Later analysis can distinguish the submission event from its outcome.</dd></div>
+        </dl>
+      </article>
+      <article class="decision">
+        <h3>AI judgment and software authority are separated</h3>
+        <dl>
+          <div><dt>Why</dt><dd>AI may assist interpretation while deterministic controls preserve critical state and decision rules.</dd></div>
+          <div><dt>Risk prevented</dt><dd>Model output silently becoming system authority.</dd></div>
+          <div><dt>Consequence</dt><dd>Identity, evidence ownership, lifecycle state, validation, and critical decision rules remain controlled.</dd></div>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="walkthrough" aria-labelledby="walkthrough-h">
+    <h2 id="walkthrough-h">Synthetic walkthrough</h2>
+    <p class="sec__claim">A fictional example of depth-aware matching.</p>
+    <div class="note note--boundary"><p>This is an illustrative, fictional scenario. It is not a candidate record, application, or real job evaluation.</p></div>
+    <div class="items">
+      <div>
+        <h3>Requirement A · program ownership</h3>
+        <p class="quote">“Lead deployment of agentic workflows across business operations. Partner with engineering and security. Establish governance, human-in-the-loop controls, evaluation frameworks, and operational readiness.”</p>
+        <ul class="tags" aria-label="Recognized concepts">
+          <li>Agentic Workflow Design</li>
+          <li>AI Governance</li>
+          <li>Human-in-the-Loop Design</li>
+          <li>Technical Program Direction</li>
+        </ul>
+        <p class="class-line">Technical fluency or program ownership</p>
+      </div>
+      <div>
+        <h3>Requirement B · hands-on implementation</h3>
+        <p class="quote">“Build distributed LLM inference services in production Python.”</p>
+        <p>Different classification: hands-on technical implementation. Systems or program evidence does not automatically establish software-engineering evidence.</p>
+        <p class="class-line">Hands-on technical implementation</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="state" aria-labelledby="state-h">
+    <h2 id="state-h">Current state</h2>
+    <p class="sec__claim">Implemented as a private, local-first career-operations system.</p>
+    <dl class="stats">
+      <div><dt>Passing automated tests at the latest clean public checkpoint. It does not represent active private development.</dt><dd>222 / 222</dd></div>
+    </dl>
+    <div class="prose">
+      <p>Governed preparation-plan review and cancellation, explicit human-input and application-question foundations, and minimal application-package readiness checks are included. Final application decisions and external action remain human-controlled; no autonomous submission or live browser, ATS, or model runtime is claimed.</p>
+    </div>
+    <div class="note note--boundary">
+      <p><b>Current boundary: human-controlled final action.</b> Private and local-first. Approval and final external action remain outside automated runtime scope.</p>
+      <p>No autonomous application submission, browser automation, production SaaS, or live model-backed generation.</p>
+    </div>
+    <h3 class="h3 sec__sub">Inspect public evidence</h3>
+    <div class="evidence">
+      {evidence.map((e) => <a href={e.href} rel="noopener"><b>{e.label}</b><span>Work samples repository on GitHub</span></a>)}
+    </div>
+  </section>
+
+  <section class="sec" id="scope" aria-labelledby="scope-h">
+    <h2 id="scope-h">Scope boundary</h2>
+    <p class="sec__claim">Built for disciplined progress, not false autonomy.</p>
+    <div class="twolists">
+      <div>
+        <h3>Current</h3>
+        <ul>
+          <li>Governed ATS and manual intake</li>
+          <li>Normalization, identity, verification, and deduplication</li>
+          <li>Evidence-bound evaluation, capability matching, and deterministic scoring</li>
+          <li>Preparation orchestration, frozen packets, private artifacts, and human review</li>
+        </ul>
+      </div>
+      <div class="is-no">
+        <h3>Not currently automated</h3>
+        <ul>
+          <li>Broad web search</li>
+          <li>Live model-backed generation and browser application</li>
+          <li>Production document QA and final application submission</li>
+        </ul>
+      </div>
+    </div>
+    <p class="closing">The point is not to remove human responsibility from a consequential workflow. It is to make the information, choices, and boundaries that support human judgment more reliable.</p>
+  </section>
+</Case>

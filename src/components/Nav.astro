@@ -1,0 +1,36 @@
+---
+import { href } from '../lib/url';
+
+interface Props {
+  current?: 'work';
+  onHome?: boolean;
+}
+const { current, onHome = false } = Astro.props;
+const home = onHome ? '' : href('/');
+const items = [
+  { key: 'help', to: `${home}#help`, label: 'How I help' },
+  { key: 'career', to: `${home}#career`, label: 'Career' },
+  { key: 'work', to: `${home}#work`, label: 'AI work' },
+  { key: 'answers', to: `${home}#answers`, label: 'Questions' },
+  { key: 'contact', to: `${home}#contact`, label: 'Contact' },
+];
+---
+
+<header class="nav" data-tone="light">
+  <a class="nav__name" href={href('/')}>Matthew Ralph</a>
+  <nav class="nav__menu" id="site-menu" aria-label="Site">
+    <ul>
+      {
+        items.map((i) => (
+          <li>
+            <a href={i.to} data-key={i.key} aria-current={current === i.key ? 'page' : undefined}>
+              {i.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+  <a class="nav__resume" href={href('/Matthew_Ralph_Resume.pdf')} download>Résumé</a>
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+</header>

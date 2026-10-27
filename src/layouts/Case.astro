@@ -1,0 +1,146 @@
+---
+// Shared layout for the four AI case studies: same type, color, nav and components as the homepage,
+// in a quieter reading layout. No 3D, no scroll choreography.
+import Base from './Base.astro';
+import { projects } from '../data/site';
+import { href } from '../lib/url';
+
+interface Props {
+  slug: string;
+  name: string;
+  dek: string;
+  lead: string[];
+  facts: { k: string; v: string }[];
+  evidence: { label: string; href: string; where: string }[];
+  ledger: { did: string; directed: string; human: string };
+  // the case in plain words, in the homepage's story shape, for readers who aren't engineers
+  plain: { problem: string; built: string; who: string; proves: string };
+  sections: { id: string; name: string }[];
+}
+const { slug, name, dek, lead, facts, evidence, ledger, plain, sections } = Astro.props;
+const i = projects.findIndex((p) => p.slug === slug);
+const prev = projects[(i - 1 + projects.length) % projects.length];
+const next = projects[(i + 1) % projects.length];
+---
+
+<Base title={`${name}: a case study by Matthew Ralph`} description={dek} current="work">
+  <header class="case-hero">
+    <div class="wrap">
+      <nav class="case-switch" aria-label="Case studies">
+        <ul>
+          {
+            projects.map((p) => (
+              <li>
+                <a href={href(`/work/${p.slug}/`)} aria-current={p.slug === slug ? 'page' : undefined}>
+                  {p.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <div class="case-hero__grid">
+        <div class="case-hero__main">
+          <h1>{name}</h1>
+          <p class="case-hero__dek">{dek}</p>
+          {lead.map((l) => <p class="case-hero__lead">{l}</p>)}
+          <p class="case-hero__links">
+            {
+              evidence.slice(0, 2).map((e, k) => (
+                <a class={`btn ${k === 0 ? 'btn--solid' : 'btn--line'}`} href={e.href} rel="noopener">
+                  {e.label}
+                </a>
+              ))
+            }
+          </p>
+        </div>
+        <dl class="case-hero__facts">
+          {
+            facts.map((f) => (
+              <div>
+                <dt>{f.k}</dt>
+                <dd>{f.v}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section class="plain" aria-labelledby="plain-title">
+      <h2 class="plain__title" id="plain-title">In plain words</h2>
+      <dl class="plain__grid">
+        <div>
+          <dt>The problem</dt>
+          <dd>{plain.problem}</dd>
+        </div>
+        <div>
+          <dt>What I built</dt>
+          <dd>{plain.built}</dd>
+        </div>
+        <div>
+          <dt>Who it’s for</dt>
+          <dd>{plain.who}</dd>
+        </div>
+        <div>
+          <dt>What it proves</dt>
+          <dd>{plain.proves}</dd>
+        </div>
+      </dl>
+    </section>
+    <section class="authority" aria-labelledby="authority-title">
+      <h2 class="sr-only" id="authority-title">Authority ledger: who did what</h2>
+      <div class="authority__system">
+        <h3>System did</h3>
+        <p>{ledger.did}</p>
+      </div>
+      <div class="authority__matthew">
+        <h3>Matthew directed</h3>
+        <p>{ledger.directed}</p>
+      </div>
+      <div class="authority__human">
+        <h3>Human authority remained</h3>
+        <p>{ledger.human}</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="wrap case-body">
+    <aside class="case-rail" aria-label="On this page">
+      <h2>On this page</h2>
+      <ul>
+        {sections.map((s) => <li><a href={`#${s.id}`} data-sec={s.id}>{s.name}</a></li>)}
+      </ul>
+      <h2>Public evidence</h2>
+      <ul class="case-rail__ev">
+        {evidence.map((e) => <li><a href={e.href} rel="noopener">{e.label}</a></li>)}
+      </ul>
+      <a class="case-rail__back" href={href('/#work')}>All AI case studies</a>
+    </aside>
+    <div class="case-content">
+      <details class="case-toc">
+        <summary>On this page</summary>
+        <ul>
+          {sections.map((s) => <li><a href={`#${s.id}`}>{s.name}</a></li>)}
+        </ul>
+        <ul class="case-toc__ev" aria-label="Public evidence">
+          {evidence.map((e) => <li><a href={e.href} rel="noopener">{e.label}</a></li>)}
+        </ul>
+      </details>
+      <slot />
+    </div>
+  </div>
+
+  <nav class="wrap case-pager" aria-label="More case studies">
+    <a href={href(`/work/${prev.slug}/`)}><span>Previous case study</span><b>{prev.name}</b></a>
+    <a href={href(`/work/${next.slug}/`)}><span>Next case study</span><b>{next.name}</b></a>
+    <a class="case-back" href={href('/#work')}>Back to all AI work</a>
+  </nav>
+
+  <script>
+    import { initCase } from '../scripts/case';
+    initCase();
+  </script>
+</Base>
