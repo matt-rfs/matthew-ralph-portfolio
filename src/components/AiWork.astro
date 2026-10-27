@@ -1,5 +1,7 @@
 ---
 // The four AI systems, each linking to its case study. Sits after the tour on the homepage, right after the hero on /ai/.
+// The whole tile is the link (the name's link stretches over it) and says so, because a bare name read as a list
+// (Matthew, 2026-10-27: "it almost feels as if those pages are hidden").
 import { projects } from '../data/site';
 import { href } from '../lib/url';
 
@@ -22,6 +24,9 @@ const { lede } = Astro.props;
             </h3>
             <p class="tile__line">{p.line}</p>
             <p class="tile__proof">{p.proof}</p>
+            <p class="tile__more">
+              <span>Read the case study</span> <span class="tile__arrow" aria-hidden="true">→</span>
+            </p>
           </li>
         ))
       }
