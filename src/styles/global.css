@@ -4404,40 +4404,63 @@ html.studio-live .beat--night {
 .tiles {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 56px;
+  gap: 24px;
   margin-top: 56px;
-  border-top: 1px solid var(--ink);
 }
+/* floating cards: each tile is one link to its case study and lifts off the page when pointed at */
 .tile {
   position: relative;
-  padding: 26px 0 30px;
-  border-bottom: 1px solid var(--rule);
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 32px 28px;
+  border: 1px solid var(--rule-2);
+  border-radius: 18px;
+  background: var(--foam);
+  box-shadow:
+    0 1px 2px rgba(18, 52, 63, 0.06),
+    0 14px 30px -24px rgba(18, 52, 63, 0.4);
   transition:
-    border-color 0.25s var(--ease),
-    box-shadow 0.25s var(--ease);
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease),
+    border-color 0.35s var(--ease);
 }
-/* the name's link covers the whole tile, so a click anywhere on it opens the case study */
+/* a soft teal light that follows the cursor across the card */
+.tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgba(10, 156, 148, 0.16), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease);
+  pointer-events: none;
+}
+/* the name's link covers the whole card, so a click anywhere on it opens the case study */
 .tile__name a::after {
   content: '';
   position: absolute;
   inset: 0;
 }
-/* the rule under the tile thickens to teal (a shadow, so nothing below moves) */
-.tile:hover {
-  border-bottom-color: var(--teal);
-  box-shadow: inset 0 -1px 0 var(--teal);
-}
 .tile__name a:focus-visible {
   outline: none;
 }
-/* the focus ring sits inside the tile's padding, clear of the rules above and below it */
-.tile:has(.tile__name a:focus-visible)::before {
-  content: '';
-  position: absolute;
-  inset: 8px -12px;
-  border: 3px solid var(--thread);
-  border-radius: 8px;
-  pointer-events: none;
+/* 3D only while pointed at, so the text stays crisp at rest; --rx and --ry tip it toward the cursor (AiWork's script) */
+.tile:hover,
+.tile:has(.tile__name a:focus-visible) {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px);
+  border-color: rgba(11, 111, 106, 0.3);
+  box-shadow:
+    0 2px 4px rgba(18, 52, 63, 0.05),
+    0 32px 54px -30px rgba(18, 52, 63, 0.5);
+}
+.tile:hover::before {
+  opacity: 1;
+}
+.tile:has(.tile__name a:focus-visible) {
+  outline: 3px solid var(--thread);
+  outline-offset: 4px;
 }
 .tile__name {
   font-stretch: 108%;
@@ -4463,9 +4486,10 @@ html.studio-live .beat--night {
   font-weight: 600;
   color: var(--teal);
 }
-/* underlined like "See how" in Sound familiar?, so it reads as the way in */
+/* underlined like "See how" in Sound familiar?, and held to the bottom so a row's cards end level */
 .tile__more {
-  margin-top: 18px;
+  margin-top: auto;
+  padding-top: 20px;
   font-size: 0.94rem;
   font-weight: 600;
   color: var(--ink);
@@ -4489,6 +4513,26 @@ html.studio-live .beat--night {
 .tile:hover .tile__arrow,
 .tile:has(.tile__name a:focus-visible) .tile__arrow {
   transform: translateX(5px);
+}
+/* phones and touch screens get the cards without the hover lift */
+@media (hover: none) {
+  .tile:hover {
+    transform: none;
+  }
+}
+@media (max-width: 600px) {
+  .tiles {
+    gap: 16px;
+  }
+  .tile {
+    padding: 24px 22px 22px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile:hover,
+  .tile:has(.tile__name a:focus-visible) {
+    transform: none;
+  }
 }
 .answers {
   padding: clamp(80px, 12vh, 150px) 0;

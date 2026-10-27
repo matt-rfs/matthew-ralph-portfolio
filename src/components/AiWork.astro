@@ -1,7 +1,8 @@
 ---
 // The four AI systems, each linking to its case study. Sits after the tour on the homepage, right after the hero on /ai/.
 // The whole tile is the link (the name's link stretches over it) and says so, because a bare name read as a list
-// (Matthew, 2026-10-27: "it almost feels as if those pages are hidden").
+// (Matthew, 2026-10-27: "it almost feels as if those pages are hidden"). The tiles are floating cards that lift
+// toward the cursor, because a hover that only recoloured the rule went unnoticed in Safari.
 import { projects } from '../data/site';
 import { href } from '../lib/url';
 
@@ -33,3 +34,29 @@ const { lede } = Astro.props;
     </ul>
   </div>
 </section>
+
+<script>
+  // floating cards: the light follows the cursor and the card tips a few degrees toward it (mouse and trackpad only;
+  // with reduced motion the light still follows but the card stays flat)
+  const fine = matchMedia('(hover: hover) and (pointer: fine)');
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  const TILT = 5; // degrees from edge to edge
+
+  for (const tile of document.querySelectorAll<HTMLElement>('.tile')) {
+    tile.addEventListener('pointermove', (e) => {
+      if (!fine.matches) return;
+      const r = tile.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width;
+      const y = (e.clientY - r.top) / r.height;
+      tile.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
+      tile.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
+      if (still.matches) return;
+      tile.style.setProperty('--rx', `${((0.5 - y) * TILT).toFixed(2)}deg`);
+      tile.style.setProperty('--ry', `${((x - 0.5) * TILT).toFixed(2)}deg`);
+    });
+    tile.addEventListener('pointerleave', () => {
+      tile.style.removeProperty('--rx');
+      tile.style.removeProperty('--ry');
+    });
+  }
+</script>
