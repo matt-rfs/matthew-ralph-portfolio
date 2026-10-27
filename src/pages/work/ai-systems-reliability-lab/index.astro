@@ -1,0 +1,206 @@
+---
+// Content ported from the existing public case study (text preserved; presentation adapted).
+// Changed for consistency across the four pages: the project name is the H1;
+// the original H1 ("Evaluate the release. Diagnose the failure. Authorize the action.") is the summary line.
+import Case from '../../../layouts/Case.astro';
+
+const evidence = [
+  { label: 'Lab repository', href: 'https://github.com/matt-rfs/ai-systems-reliability-lab', where: 'GitHub' },
+  { label: 'Curated work sample', href: 'https://github.com/matt-rfs/matthew-ralph-work-samples/tree/main/ai-systems-reliability-lab', where: 'GitHub' },
+  { label: 'Lab 02 failure-lineage visual', href: 'https://github.com/matt-rfs/ai-systems-reliability-lab/blob/main/labs/02-failure-forensics/results/failure_lineage.svg', where: 'GitHub' },
+  { label: 'Lab 02 technical evidence', href: 'https://github.com/matt-rfs/ai-systems-reliability-lab/blob/main/labs/02-failure-forensics/README.md', where: 'GitHub' },
+];
+const sections = [
+  { id: 'map', name: 'Proof map' },
+  { id: 'lab01', name: 'Lab 01: Evaluate' },
+  { id: 'lab02', name: 'Lab 02: Diagnose' },
+  { id: 'causality', name: 'Causality' },
+  { id: 'lab03', name: 'Lab 03: Route' },
+  { id: 'lab04', name: 'Lab 04: Authorize' },
+  { id: 'judgment', name: 'Human judgment' },
+  { id: 'boundaries', name: 'Boundaries' },
+  { id: 'inspect', name: 'Inspect evidence' },
+];
+---
+
+<Case
+  slug="ai-systems-reliability-lab"
+  name="AI Systems Reliability Lab"
+  dek="Evaluate the release. Diagnose the failure. Authorize the action."
+  lead={[
+    'A focused program of bounded AI reliability experiments: evaluate whether a candidate configuration earns release, diagnose where a bad outcome began, route only when quality permits it, and authorize bounded action explicitly.',
+    'Prove the controls before granting more authority. Labs 01–02 evaluate and diagnose; Lab 03 closed its Freeze A route set when no router was needed; Lab 04 tests explicit human-authority requirements before bounded synthetic execution.',
+  ]}
+  facts={[
+    { k: 'Case study', v: 'Focused technical proof, in a public repository' },
+    { k: 'Status', v: 'Labs 01–02 proven; Lab 03 closed with no router needed; Lab 04 passed its 12-case synthetic matrix' },
+  ]}
+  evidence={evidence}
+  ledger={{
+    did: 'Evaluate configurations, trace failure lineage, and enforce declared action requirements.',
+    directed: 'Experiment design, release criteria, and causal evidence requirements.',
+    human: 'Release judgment, evaluator authority, and publication acceptance.',
+  }}
+  plain={{
+    problem: 'Teams hand AI more responsibility before they know it’s good enough, and when something breaks they fix the symptom instead of the cause.',
+    built: 'Four small, controlled experiments: one decides whether a new setup has earned release, one traces a bad result back to where it started, one tests whether routing by quality is needed, and one checks that nothing runs without explicit human authority.',
+    who: 'Teams deciding when to trust AI with more. The code is public.',
+    proves: 'A weaker setup was held back (58.6% against a 90% bar), 14 of 14 test failures were traced to the right stage, and 12 test cases ran with zero unauthorized actions.',
+  }}
+  sections={sections}
+>
+  <section class="sec" id="map" aria-labelledby="map-h">
+    <h2 id="map-h">Proof map</h2>
+    <p class="sec__claim">Four bounded questions. One evidence standard.</p>
+    <ol class="flow" aria-label="The four labs">
+      <li>Lab 01 · Evaluate<small>Model Regression Gate · proven experiment</small></li>
+      <li>Lab 02 · Diagnose<small>Failure Forensics · proven experiment</small></li>
+      <li>Lab 03 · Route<small>Cost / Quality Router · Freeze A closed, no-router-needed</small></li>
+      <li>Lab 04 · Authorize<small>Human Authority Gate · 12-case synthetic matrix, PASS</small></li>
+    </ol>
+    <div class="note"><p><b>Completion is not verification. Verification is not authority.</b></p></div>
+  </section>
+
+  <section class="sec" id="lab01" aria-labelledby="lab01-h">
+    <h2 id="lab01-h">Lab 01: Evaluate</h2>
+    <p class="sec__claim">A frozen release decision remained visible after the evaluator was audited.</p>
+    <div class="prose">
+      <p>Lab 01 compared two frozen configurations across 30 synthetic cases. Both passed deterministic validation, but the historical automated release decision was FAIL: the candidate’s 58.6% factual-support score remained below the frozen 90% threshold.</p>
+    </div>
+    <dl class="stats">
+      <div><dt>Frozen experiment, both configurations</dt><dd>30 cases</dd></div>
+      <div><dt>Deterministic checks · 0 regressions</dt><dd>30 / 30</dd></div>
+      <div><dt>Outputs reviewed in the human audit</dt><dd>60 / 60</dd></div>
+    </dl>
+    <div class="prose">
+      <p>The candidate was materially weaker, and the local semantic evaluator had not earned release authority.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="table">
+        <caption>Lab 01 human-audit comparison</caption>
+        <thead>
+          <tr><th scope="col">Measure</th><th scope="col">Baseline</th><th scope="col">Candidate</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Human-confirmed factual support</th><td>96.7%</td><td>70.0%</td></tr>
+          <tr><th scope="row">Judge / human agreement</th><td>53.3%</td><td>43.3%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note"><p>Human review added interpretation without rewriting the historical automated FAIL.</p></div>
+  </section>
+
+  <section class="sec" id="lab02" aria-labelledby="lab02-h">
+    <h2 id="lab02-h">Lab 02: Diagnose</h2>
+    <p class="sec__claim">A final bad brief may be a downstream symptom—not the root cause.</p>
+    <div class="prose">
+      <p>Lab 02 is a frozen synthetic fixture with five stages. It records inspectable intermediate state and structured traces so the first causal failure can be distinguished from where the outcome became visible.</p>
+    </div>
+    <ol class="flow" aria-label="Lab 02 stages">
+      <li>Normalize</li>
+      <li>Classify</li>
+      <li>Select evidence</li>
+      <li>Recommend</li>
+      <li>Generate final brief</li>
+    </ol>
+    <dl class="stats">
+      <div><dt>Frozen fixture: 3 clean, 11 injected failures</dt><dd>14 cases</dd></div>
+      <div><dt>Causal localization: expected first stages, bounded to this fixture</dt><dd>14 / 14</dd></div>
+      <div><dt>Trace completeness: structured stage traces complete</dt><dd>70 / 70</dd></div>
+      <div><dt>Causal outcomes: propagated, contained, local / no downstream propagation</dt><dd>4 · 5 · 5</dd></div>
+    </dl>
+  </section>
+
+  <section class="sec" id="causality" aria-labelledby="causality-h">
+    <h2 id="causality-h">Causality</h2>
+    <p class="sec__claim">The stage where a problem appears is not necessarily the stage that caused it.</p>
+    <div class="items">
+      <div><h3>Propagated</h3><p>An earlier invalid state was actually consumed by a later stage and observed in its output.</p></div>
+      <div><h3>Contained</h3><p>A failed stage stopped later work fail-closed; blocked stages were not treated as propagated failures.</p></div>
+      <div><h3>Local</h3><p>The failure had no invalid downstream output.</p></div>
+      <div><h3>Root cause</h3><p>A classification defect can produce evidence, recommendation, and final-brief symptoms; final generation is not automatically the cause.</p></div>
+    </div>
+    <div class="prose">
+      <p>The canonical <a href={evidence[2].href} rel="noopener">failure-lineage visual</a> shows this distinction in the technical evidence record.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="lab03" aria-labelledby="lab03-h">
+    <h2 id="lab03-h">Lab 03: Route</h2>
+    <p class="sec__claim">The routing experiment stopped when complexity did not earn its place.</p>
+    <div class="prose">
+      <p>For the frozen Freeze A V002 route definitions and six-case canary, R0 was eligible 6 / 6 while R1 and R2 were ineligible 0 / 6. The capability gradient was absent, so the disposition was NO-ROUTER-NEEDED, supported only for that frozen route set.</p>
+    </div>
+    <div class="items">
+      <div><h3>Quality first</h3><p>Quality is a constraint before cost is an optimization target.</p></div>
+      <div><h3>Bounded conclusion</h3><p>Freeze B and its 36 measured cases were not authorized; the result does not claim routing is generally useless.</p></div>
+    </div>
+    <div class="note"><p><b>Complexity must pay rent.</b> The experiment stopped rather than manufacturing a routing comparison.</p></div>
+  </section>
+
+  <section class="sec" id="lab04" aria-labelledby="lab04-h">
+    <h2 id="lab04-h">Lab 04: Authorize</h2>
+    <p class="sec__claim">A declared human requirement was enforced before bounded synthetic execution.</p>
+    <div class="prose">
+      <p>Lab 04 tested whether explicit human-authority requirements could be enforced before a bounded synthetic action reached execution. The frozen 12-case matrix passed with zero unauthorized executions.</p>
+    </div>
+    <div class="items">
+      <div><h3>Decision types</h3><p>AUTONOMOUS, HUMAN_REQUIRED, and PROHIBITED are distinct; the experiment does not claim every action requires human approval.</p></div>
+      <div><h3>Frozen result</h3><p>0 disposition, reason-code, authority-requirement, or executor-state mismatches; safety and correctness were not falsified.</p></div>
+    </div>
+    <div class="note note--boundary"><p>Synthetic, deterministic, local, and standard-library only: no model, database, external service, or real message. Authorization present ≠ authorization valid; valid authorization ≠ unbounded authority.</p></div>
+  </section>
+
+  <section class="sec" id="judgment" aria-labelledby="judgment-h">
+    <h2 id="judgment-h">Human judgment</h2>
+    <p class="sec__claim">Mechanically plausible evidence did not earn publication authority.</p>
+    <div class="prose">
+      <p>Matthew designed the forensic experiment around causal failure localization, required inspectable intermediate state and real stage-to-stage consumption, rejected a mechanically plausible but causally weak first publication candidate, and directed the repaired experiment and validation against stricter evidence requirements.</p>
+    </div>
+    <div class="items">
+      <div><h3>Causality, not sequence</h3><p>Stage order alone did not prove propagation; actual downstream consumption had to be observed.</p></div>
+      <div><h3>Containment, not propagation</h3><p>Fail-closed blocking was distinguished from an invalid state that had travelled downstream.</p></div>
+      <div><h3>Repair direction</h3><p>The experiment was repaired to consume real accumulated stage state rather than assign propagation mechanically.</p></div>
+      <div><h3>Regression preservation</h3><p><code>evidence-01</code> fails at evidence selection before its bounded correction and passes after it; the loop remains a regression test.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="boundaries" aria-labelledby="boundaries-h">
+    <h2 id="boundaries-h">Boundaries</h2>
+    <p class="sec__claim">Small, inspectable experiments—not a production claim.</p>
+    <div class="twolists">
+      <div>
+        <h3>What this demonstrates</h3>
+        <ul>
+          <li>Frozen evaluation and deterministic failure analysis</li>
+          <li>Structured traces and bounded causal localization</li>
+          <li>Evidence integrity and explicit human authority</li>
+        </ul>
+      </div>
+      <div class="is-no">
+        <h3>What this does not claim</h3>
+        <ul>
+          <li>Production incident forensics or observability ownership</li>
+          <li>Live model monitoring or autonomous remediation</li>
+          <li>Generalized diagnostic accuracy or enterprise-scale operation</li>
+        </ul>
+      </div>
+    </div>
+    <div class="prose">
+      <p>Lab 02 is synthetic, deterministic, and local. It invokes no model, reports token fields as unavailable, and incurred $0 API/service spend. Its 1.656 ms measurement is fixture execution timing—not model inference or production latency.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="inspect" aria-labelledby="inspect-h">
+    <h2 id="inspect-h">Inspect evidence</h2>
+    <p class="sec__claim">Start with the curated interpretation. Go deeper when needed.</p>
+    <div class="prose">
+      <p>The curated work sample makes the program easy to enter; the canonical public repository remains the technical source of truth for both Labs.</p>
+    </div>
+    <div class="evidence">
+      <a href={evidence[1].href} rel="noopener"><b>Open curated Reliability Lab work sample</b><span>Work samples repository on GitHub</span></a>
+      <a href={evidence[3].href} rel="noopener"><b>Open Lab 02 technical evidence</b><span>AI Systems Reliability Lab repository on GitHub</span></a>
+      <a href={evidence[0].href} rel="noopener"><b>View the evidence on GitHub</b><span>The full Lab repository</span></a>
+    </div>
+  </section>
+</Case>

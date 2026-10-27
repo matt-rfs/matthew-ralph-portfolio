@@ -1,0 +1,196 @@
+---
+// Content ported from the existing public case study (text preserved; presentation adapted).
+// Added from Matthew (2026-10-24): RFS is an ongoing side project for building and testing AI skills.
+import Case from '../../../layouts/Case.astro';
+
+const WS = 'https://github.com/matt-rfs/matthew-ralph-work-samples/blob/main/response-flow-systems';
+const evidence = [
+  { label: 'Synthetic walkthrough', href: `${WS}/synthetic-walkthrough.md`, where: 'GitHub' },
+  { label: 'Design decisions', href: `${WS}/design-decisions.md`, where: 'GitHub' },
+  { label: 'Validation snapshot', href: `${WS}/validation-snapshot.md`, where: 'GitHub' },
+];
+const sections = [
+  { id: 'problem', name: 'Business problem' },
+  { id: 'role', name: 'Matthew’s role' },
+  { id: 'lifecycle', name: 'Response lifecycle' },
+  { id: 'decisions', name: 'Design decisions' },
+  { id: 'maturity', name: 'Current maturity' },
+];
+---
+
+<Case
+  slug="response-flow-systems"
+  name="Response Flow Systems"
+  dek="Governed workflow foundation for improving lead-response operations."
+  lead={[
+    'Response Flow Systems is designed around explicit human approval, evidence custody, message lineage, and disciplined operating constraints—not around unattended customer automation.',
+  ]}
+  facts={[
+    { k: 'Case study', v: 'Implemented offline governance infrastructure' },
+    { k: 'Matthew’s role', v: 'Workflow architecture, operating-model design, policy controls, and implementation direction' },
+    { k: 'Current maturity', v: 'Implemented offline governance infrastructure; live runtime stages remain held' },
+    { k: 'Context', v: 'An ongoing side project for building and testing AI skills' },
+  ]}
+  evidence={evidence}
+  ledger={{
+    did: 'Track state, evidence custody, approval bindings, and failure conditions.',
+    directed: 'Outbound governance model, approval rules, custody boundaries, and validation.',
+    human: 'Message approval, exception handling, and external send authority.',
+  }}
+  plain={{
+    problem: 'Good leads go cold when capture, handoff, timing and follow-up aren’t connected, and nobody is sure who owns the next reply.',
+    built: 'The operating model for a lead-response workflow: stages, handoffs, ownership, approval rules, and what happens when something fails. I directed the build and tested it against those rules.',
+    who: 'Sales and service teams that answer inbound leads. It runs offline today; the live stages are deliberately on hold.',
+    proves: '186 of 186 tests pass at the public checkpoint, and no message goes out without a person approving it.',
+  }}
+  sections={sections}
+>
+  <section class="sec" id="problem" aria-labelledby="problem-h">
+    <h2 id="problem-h">Business problem</h2>
+    <p class="sec__claim">Lead response is an operating system problem.</p>
+    <div class="prose">
+      <p>A promising inquiry can lose momentum when capture, handoff, response timing, follow-up, and human decision-making are disconnected. RFS treats those moments as a governed lifecycle rather than a single autoresponder.</p>
+    </div>
+    <ul class="qlist">
+      <li>Inquiries arrive outside ideal response windows.</li>
+      <li>Handoffs can lose context or ownership.</li>
+      <li>Follow-up can become inconsistent.</li>
+      <li>Human judgment needs a clear place in the path.</li>
+    </ul>
+  </section>
+
+  <section class="sec" id="role" aria-labelledby="role-h">
+    <h2 id="role-h">Matthew’s role</h2>
+    <p class="sec__claim">Making a commercial workflow inspectable.</p>
+    <div class="prose">
+      <p>Matthew defined the business-process model, lifecycle stages, handoffs, approval boundaries, policy constraints, and implementation direction. The aim is to turn a response process into a system whose state, authority, and limits can be reviewed—not to obscure them behind automation.</p>
+    </div>
+    <div class="items items--cards">
+      <div><h3>Process analysis</h3><p>Where response leakage and ambiguity arise</p></div>
+      <div><h3>Workflow architecture</h3><p>Stages, handoffs, ownership, and state</p></div>
+      <div><h3>Control design</h3><p>Approval, policy, budget, and execution limits</p></div>
+      <div><h3>Implementation direction</h3><p>Bounded development and validation criteria</p></div>
+    </div>
+    <div class="items">
+      <div><h3>Human authority</h3><p>Matthew’s role: Designed the outbound governance model, approval and evidence boundaries, state-binding rules, failure controls, and validation expectations; directed bounded implementation and testing against those requirements.</p></div>
+      <div><h3>System enforcement</h3><p>Exact-state checks, evidence eligibility, identity and thread-lineage rules, stale or conflicting-state detection, bounded credit eligibility, and fail-closed behavior.</p></div>
+    </div>
+    <div class="twolists">
+      <div>
+        <h3>What required human judgment</h3>
+        <ul>
+          <li>Approve outbound action</li>
+          <li>Determine whether reviewed evidence remains valid</li>
+          <li>Resolve ambiguous identity or thread state</li>
+          <li>Decide whether failure or conflict requires stop</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="lifecycle" aria-labelledby="lifecycle-h">
+    <h2 id="lifecycle-h">Response lifecycle</h2>
+    <p class="sec__claim">A conceptual path with visible maturity.</p>
+    <div class="prose">
+      <p>The lifecycle is the intended operating model. Its labels deliberately distinguish implemented controls, development-stage components, and architectural stages.</p>
+    </div>
+    <ol class="flow" aria-label="Response lifecycle">
+      <li class="m-arch">Lead arrives<small>Capture · architectural</small></li>
+      <li>Classify / route<small>State and custody controls · development-stage</small></li>
+      <li class="m-arch">Response path<small>Bounded execution design · architectural</small></li>
+      <li class="m-impl">Human action<small>Explicit approval boundary · implemented control</small></li>
+      <li>Follow-up<small>Reply classification / custody · development-stage</small></li>
+      <li class="m-arch">Resolution<small>Outcome model · architectural</small></li>
+    </ol>
+    <p class="maturity" aria-label="Legend">
+      <span><i class="m-impl"></i>Implemented controls</span>
+      <span><i class="m-dev"></i>Development-stage components</span>
+      <span><i class="m-arch"></i>Architectural workflow</span>
+    </p>
+  </section>
+
+  <section class="sec" id="decisions" aria-labelledby="decisions-h">
+    <h2 id="decisions-h">Design decisions</h2>
+    <p class="sec__claim">Controls before convenience.</p>
+    <div class="decisions">
+      <article class="decision">
+        <h3>Outbound action must bind to exact reviewed state</h3>
+        <dl>
+          <div><dt>Why</dt><dd>A proposed action should not remain eligible after its reviewed basis has changed.</dd></div>
+          <div><dt>Risk prevented</dt><dd>Stale approval being treated as present authority.</dd></div>
+          <div><dt>Consequence</dt><dd>Changed or conflicting state requires review rather than silent execution.</dd></div>
+        </dl>
+      </article>
+      <article class="decision">
+        <h3>Evidence custody is distinct from generated content</h3>
+        <dl>
+          <div><dt>Why</dt><dd>Provider identity, message identity, replies, and bounces are separate evidence signals.</dd></div>
+          <div><dt>Risk prevented</dt><dd>A persuasive or partial signal being accepted as sufficient proof.</dd></div>
+          <div><dt>Consequence</dt><dd>Eligibility and lineage remain inspectable before action can proceed.</dd></div>
+        </dl>
+      </article>
+      <article class="decision">
+        <h3>Ambiguity and conflict fail closed</h3>
+        <dl>
+          <div><dt>Why</dt><dd>Malformed, stale, conflicting, or insufficient context cannot safely advance a consequential workflow.</dd></div>
+          <div><dt>Risk prevented</dt><dd>Unsafe external action on unresolved state.</dd></div>
+          <div><dt>Consequence</dt><dd>The system rejects, pauses, or requires review rather than silently advancing.</dd></div>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section class="sec" id="maturity" aria-labelledby="maturity-h">
+    <h2 id="maturity-h">Current maturity</h2>
+    <p class="sec__claim">Credibility begins with the boundary.</p>
+    <dl class="stats">
+      <div><dt>Passing Python tests at the current public offline-governance checkpoint.</dt><dd>186 / 186</dd></div>
+    </dl>
+    <div class="prose">
+      <p>Repository policy guards, lint, strict type checks, and schema/fixture validation passed at that checkpoint.</p>
+    </div>
+    <div class="note note--boundary">
+      <p><b>Current boundary: offline deterministic governance.</b> No autonomous send, live Gmail or Sheets runtime, customer pilot or ROI claim, or production AI runtime.</p>
+      <p>Any eventual external execution remains subject to explicit human authority.</p>
+    </div>
+    <div class="twolists">
+      <div>
+        <h3>Implemented</h3>
+        <ul>
+          <li>Offline deterministic governance infrastructure</li>
+          <li>Exact approval binding, evidence eligibility, and message lineage</li>
+          <li>Reply/bounce safeguards and fail-closed exception handling</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Validated controls</h3>
+        <ul>
+          <li>Bounded credit / no-spend eligibility</li>
+          <li>Current accepted infrastructure backed by 186 passing Python tests</li>
+          <li>Repository policy guards, lint, strict type checks, and schema/fixture validation</li>
+        </ul>
+      </div>
+      <div class="is-arch">
+        <h3>Architectural</h3>
+        <ul>
+          <li>Lead capture</li>
+          <li>Response lifecycle automation</li>
+          <li>Broader orchestration</li>
+        </ul>
+      </div>
+      <div class="is-no">
+        <h3>Not currently claimed</h3>
+        <ul>
+          <li>Live Gmail, Sheets, Make, or provider integration</li>
+          <li>Production customers or customer ROI</li>
+          <li>Autonomous external action</li>
+        </ul>
+      </div>
+    </div>
+    <h3 class="h3 sec__sub">Inspect public evidence</h3>
+    <div class="evidence">
+      {evidence.map((e) => <a href={e.href} rel="noopener"><b>{e.label}</b><span>Work samples repository on GitHub</span></a>)}
+    </div>
+    <p class="closing">Response Flow Systems implements offline governance infrastructure for consequential commercial workflows while keeping live runtime and customer-deployment claims explicitly held.</p>
+  </section>
+</Case>

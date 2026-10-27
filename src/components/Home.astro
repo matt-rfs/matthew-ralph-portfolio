@@ -1,0 +1,257 @@
+---
+// One story, three front doors (see frontDoors in site.ts): the homepage, /ai/ and /enablement/ share this page and
+// change only the headline, the first proofs, the order of the problems and questions, and where the AI work sits.
+import Base from '../layouts/Base.astro';
+import AiWork from './AiWork.astro';
+import { roles, BEATS, contact, profile, moments, personal, voice, type FrontDoor } from '../data/site';
+import { href } from '../lib/url';
+
+interface Props {
+  door: FrontDoor;
+}
+const { door } = Astro.props;
+
+// the tour's beats, in scroll order: the instrument whole, one role at a time as it comes apart, into the night
+// with the AI layer, the instrument back together
+const BEAT_COUNT = moments.length + 3;
+// the tour's exit goes to whatever follows it
+const afterTour = door.workFirst ? '#answers' : '#work';
+---
+
+<Base title={door.title} description={door.description} ogTitle={door.ogTitle} ogDescription={door.ogDescription} onHome>
+  <!-- One dark stage behind the page (studio.ts): the hero shows the instrument, the daylight sections slide over it,
+       and the tour takes it apart. Without the 3D (phones, reduced motion, no WebGL) these are plain dark sections. -->
+  <div class="stage" aria-hidden="true">
+    <img class="studio__poster" src={href('/studio-hero.jpg')} width="1440" height="900" alt="" fetchpriority="high" />
+    <canvas class="studio__canvas"></canvas>
+  </div>
+
+  <header class="studio studio--hero" id="top" data-long={door.t1.length > 34 ? '' : undefined}>
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <p class="hero__name">
+          <img
+            class="hero__face"
+            src={href('/portrait/mr-square-160.webp')}
+            srcset={`${href('/portrait/mr-square-160.webp')} 160w, ${href('/portrait/mr-square-320.webp')} 320w`}
+            sizes="44px"
+            width="160"
+            height="160"
+            alt={profile.portraitAlt}
+          />
+          <span>
+            Matthew Ralph
+            <span class="hero__lanes">{door.lanes.map((l) => <Fragment><span>{l}</span>{' '}</Fragment>)}</span>
+          </span>
+        </p>
+        <h1 class="hero__title">
+          <span class="hero__t1">{door.t1}</span>
+          <span class="hero__t2">{door.t2}</span>
+        </h1>
+        <!-- what a hiring manager checks first: has he fixed problems like ours, and how do we know -->
+        <div class="fixes">
+          <h2 class="fixes__title">Problems I’ve solved</h2>
+          <ul class="fixes__list">
+            {
+              door.fixes.map((f) => (
+                <li>
+                  <button type="button" class="fix" data-story={f.role} data-role={f.role} aria-haspopup="dialog">
+                    <span class="fix__problem">{f.problem}</span>
+                    <b class="fix__num">{f.num}</b>
+                    <span class="fix__result">{f.result}</span>
+                  </button>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <!-- what a recruiter checks first: recent titles and location -->
+        <dl class="glance">
+          <div>
+            <dt>Recent roles</dt>
+            <dd>Director of Sales, Vessel Brand · Sr. BD &amp; Enablement Manager, Visiativ–ABGI</dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd>Relocating to North County San Diego · Open to remote</dd>
+          </div>
+        </dl>
+        <div class="hero__actions">
+          <a class="btn btn--light" href={href('/Matthew_Ralph_Resume.pdf')} download>Download résumé</a>
+          <a class="hero__link" href={`mailto:${contact.email}?subject=${encodeURIComponent('Comparing notes')}`}>Compare notes for 15 minutes</a>
+        </div>
+      </div>
+      <figure class="hero__figure">
+        <img class="hero__still" src={href('/studio-still.jpg')} width="760" height="720" alt="Seven holographic layers, one per role, locked together into a single instrument dial." />
+        <figcaption class="hero__caption">One layer per role. <a href="#career">See how it was built</a></figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <div class="fade fade--to-light" aria-hidden="true"></div>
+
+  {door.workFirst && <AiWork lede={door.labLede} />}
+
+  <section class="pitch" id="help" aria-labelledby="help-title">
+    <div class="wrap">
+      <h2 class="h2" id="help-title">Sound familiar?</h2>
+      <p class="lede">Most teams I’ve led or coached run into one of these.</p>
+      <ol class="pitch__list">
+        {
+          door.pitch.map((x) => (
+            <li class="pitch__row">
+              <p class="pitch__problem">{x.problem}</p>
+              <p class="pitch__insight">{x.insight}</p>
+              <p class="pitch__proof">
+                {x.proof}{' '}
+                <button type="button" class="pitch__how" data-story={x.story}>
+                  See how
+                </button>
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+      <!-- someone else's words, right before the invitation -->
+      <figure class="pitch__voice">
+        <blockquote>
+          <p>“{voice.quote}”</p>
+        </blockquote>
+        <figcaption>{voice.name}, {voice.role} · {voice.source}</figcaption>
+      </figure>
+      <div class="pitch__cta">
+        <p class="pitch__invite">If one sounds like your team, I’d like to hear how it shows up for you.</p>
+        <p class="pitch__actions">
+          <a class="btn btn--solid" href={`mailto:${contact.email}?subject=${encodeURIComponent('Comparing notes')}`}>Compare notes for 15 minutes</a>
+          <a class="pitch__link" href={href('/Matthew_Ralph_Resume.pdf')} download>Download résumé</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="fade fade--to-dark" aria-hidden="true"></div>
+
+  <section class="studio studio--tour" id="career" aria-label="Career, one role at a time" style={`--beats:${BEAT_COUNT}`}>
+    <div class="studio__pin">
+      <div class="studio__beat beat--intro" data-at="0">
+        <h2 class="beat__title">See how it was built.</h2>
+        <p class="beat__note">Seven roles, one instrument. Scroll to take it apart.</p>
+      </div>
+
+      {
+        moments.map((m, k) => (
+          <article class:list={['studio__beat', 'moment', { 'moment--before': m.from }]} data-at={k + 1} data-role={m.role}>
+            <h3 class="moment__skill">{m.skill}</h3>
+            <p class="moment__num" style={`--len:${m.num.length}`}>
+              {m.from && (
+                <Fragment>
+                  <s class="moment__from">{m.from}</s>
+                  <span class="moment__arrow" aria-label="down to" />
+                </Fragment>
+              )}
+              <b>{m.num}</b>
+            </p>
+            <p class="moment__line">{m.line}</p>
+            <p class="moment__who">{m.who}</p>
+            <button type="button" class="moment__more" data-story={m.role}>
+              Read the story
+            </button>
+          </article>
+        ))
+      }
+
+      <div class="studio__beat beat--night" data-at={moments.length + 1}>
+        <h2 class="beat__title">{personal.nightTitle}</h2>
+        <p class="beat__note">{personal.nightLine}</p>
+      </div>
+
+      <div class="studio__beat beat--close" data-at={moments.length + 2}>
+        <h2 class="beat__title beat__title--big">Your team is the next layer.</h2>
+        <p class="beat__note">If you’re building a team that needs to perform, let’s talk.</p>
+        <div class="hero__actions">
+          <a class="btn btn--light" href={`mailto:${contact.email}?subject=${encodeURIComponent('Comparing notes')}`}>Compare notes for 15 minutes</a>
+          <a class="hero__link" href={href('/Matthew_Ralph_Resume.pdf')} download>Download résumé</a>
+          <a class="hero__link" href={contact.linkedin} rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <a class="tour__skip" href={afterTour}>Skip the tour</a>
+    </div>
+  </section>
+
+  <div class="fade fade--to-light" aria-hidden="true"></div>
+
+  {!door.workFirst && <AiWork lede={door.labLede} />}
+
+  <section class="answers" id="answers" aria-labelledby="answers-title">
+    <div class="wrap answers__grid">
+      <div>
+        <h2 class="h2" id="answers-title">Questions you might have about me.</h2>
+        <p class="lede">Tap a question for a short, honest answer.</p>
+      </div>
+      <div class="answers__list">
+        {
+          door.answers.map((x) => (
+            <details class="answer">
+              <summary>{x.q}</summary>
+              <p>{x.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- each card's data for the 3D (hud.ts draws its instrument), and each role's full story for the drawer -->
+  <div class="etch-src" hidden>
+    {
+      roles.map((r) => (
+        <div data-id={r.id} data-tint={r.tint} data-alongside={r.alongside ? '1' : undefined} data-progress={r.progress ? '1' : undefined} />
+      ))
+    }
+  </div>
+  {
+    roles.map((r) => (
+      <template id={`story-${r.id}`}>
+        <p class="story__skill">{r.skill}</p>
+        <h2 class="story__title" id="story-title">
+          {r.title}
+        </h2>
+        <p class="story__org">
+          {r.org} · {r.dates}
+        </p>
+        {r.context && <p class="story__context">{r.context}</p>}
+        <dl class="story__beats">
+          {BEATS.map((b, k) => (
+            <div>
+              <dt>{b}</dt>
+              <dd>{r.beats[k]}</dd>
+            </div>
+          ))}
+        </dl>
+        {r.story && (
+          <div class="story__how">
+            <h3>{r.story.headline}</h3>
+            <ol>
+              {r.story.steps.map((s) => (
+                <li>{s}</li>
+              ))}
+            </ol>
+            <p>
+              <b>Result</b> {r.story.result}
+            </p>
+          </div>
+        )}
+      </template>
+    ))
+  }
+  <dialog class="story" aria-labelledby="story-title">
+    <button type="button" class="story__close" aria-label="Close">Close</button>
+    <div class="story__body"></div>
+  </dialog>
+
+  <script>
+    import { initHome } from '../scripts/home';
+    initHome();
+  </script>
+</Base>

@@ -1,0 +1,30 @@
+---
+// The four AI systems, each linking to its case study. Sits after the tour on the homepage, right after the hero on /ai/.
+import { projects } from '../data/site';
+import { href } from '../lib/url';
+
+interface Props {
+  lede: string;
+}
+const { lede } = Astro.props;
+---
+
+<section class="lab" id="work" aria-labelledby="work-title">
+  <div class="wrap">
+    <h2 class="h2" id="work-title">What I’m learning by building with AI.</h2>
+    <p class="lede">{lede}</p>
+    <ul class="tiles">
+      {
+        projects.map((p) => (
+          <li class="tile">
+            <h3 class="tile__name">
+              <a href={href(`/work/${p.slug}/`)}>{p.name}</a>
+            </h3>
+            <p class="tile__line">{p.line}</p>
+            <p class="tile__proof">{p.proof}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

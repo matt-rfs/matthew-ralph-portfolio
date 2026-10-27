@@ -1,0 +1,182 @@
+---
+// Content ported from the existing public case study (text preserved; presentation adapted).
+// Not carried over: "Inspect accepted live research proof" pointed to
+// github.com/matt-rfs/personal-intelligence-refinery/blob/main/docs/portfolio/PIR_LIVE_PUBLIC_SAFE_EVIDENCE_RESEARCH_V001.md,
+// which returned 404 publicly on 2026-10-22. Re-add it here if that document becomes public.
+// Changed: the eyebrow "Strong secondary system" (internal ranking language) is not shown.
+import Case from '../../../layouts/Case.astro';
+
+const evidence = [
+  { label: 'Curated work sample', href: 'https://github.com/matt-rfs/matthew-ralph-work-samples/tree/main/personal-intelligence-refinery', where: 'GitHub' },
+];
+const sections = [
+  { id: 'problem', name: 'Problem' },
+  { id: 'system', name: 'System' },
+  { id: 'media', name: 'Local-media corridor' },
+  { id: 'proof', name: 'Real-model proof' },
+  { id: 'correction', name: 'Failure → correction' },
+  { id: 'control', name: 'Provenance + control' },
+  { id: 'role', name: 'Matthew’s role' },
+  { id: 'boundary', name: 'Boundary' },
+  { id: 'evidence', name: 'Public evidence' },
+];
+---
+
+<Case
+  slug="personal-intelligence-refinery"
+  name="Personal Intelligence Refinery"
+  dek="AI can discover evidence. It does not get to decide what becomes true."
+  lead={[
+    'Plausible model output should not automatically become trusted system knowledge. PIR separates probabilistic model reasoning from deterministic validation and human authority before any material may become a durable claim.',
+  ]}
+  facts={[
+    { k: 'Case study', v: 'Private, local-first research system' },
+    { k: 'Matthew’s role', v: 'Operating-model, provenance, authority, validation, and provider-contract design' },
+    { k: 'Current boundary', v: 'Private, local-first system; bounded hosted-model validation only' },
+  ]}
+  evidence={evidence}
+  ledger={{
+    did: 'Ground and validate CandidateClaims.',
+    directed: 'Provenance model, provider contract, validation, and value test.',
+    human: 'ACCEPT, EDIT_AND_ACCEPT, REJECT, or DEFER.',
+  }}
+  plain={{
+    problem: 'Outside research mixes useful signals with opinion, guesswork, and sometimes instructions that shouldn’t steer anything. AI output sounds just as confident either way.',
+    built: 'A private research system where AI proposes a claim, the system checks it against the source, and a person accepts, edits, rejects or sets it aside. Only approved claims are kept.',
+    who: 'My own research. The same check fits any team that makes decisions from outside sources.',
+    proves: 'In its validation run, a person reviewed 6 AI proposals: 5 accepted, 1 rejected. Nothing became a kept claim without that review.',
+  }}
+  sections={sections}
+>
+  <section class="sec" id="problem" aria-labelledby="problem-h">
+    <h2 id="problem-h">Problem</h2>
+    <p class="sec__claim">Useful information is not automatically trustworthy enough to guide a decision.</p>
+    <div class="prose">
+      <p>External material can contain valuable signals alongside ambiguity, opinion, or instructions that should not control a system. PIR creates a controlled refinery between that material and any durable decision support.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="system" aria-labelledby="system-h">
+    <h2 id="system-h">System</h2>
+    <p class="sec__claim">A model may propose. The system validates. A human authorizes.</p>
+    <ol class="flow flow--human" aria-label="Refinery path">
+      <li>External material</li>
+      <li>Extracted source evidence</li>
+      <li>Model proposes CandidateClaim</li>
+      <li>PIR grounds and validates</li>
+      <li>Human accepts, edits, rejects, or defers</li>
+    </ol>
+    <p class="flow-out"><b>Only approved material may become a durable Claim.</b></p>
+    <div class="note"><p><b>CandidateClaim is not a Claim.</b> A model cannot directly promote a proposal into a durable governed record.</p></div>
+  </section>
+
+  <section class="sec" id="media" aria-labelledby="media-h">
+    <h2 id="media-h">Local-media corridor</h2>
+    <p class="sec__claim">Local media can be transformed without silently becoming interpretation.</p>
+    <div class="prose">
+      <p>PIR can admit a bounded local source artifact into private custody without treating intake as extraction, interpretation, or decision authority.</p>
+    </div>
+    <ol class="flow" aria-label="Local-media corridor">
+      <li>Source artifact</li>
+      <li>Research run</li>
+      <li>Derived artifact</li>
+      <li>Extraction</li>
+      <li>Evidence</li>
+    </ol>
+    <div class="items">
+      <div><h3>Qualified inspection</h3><p>A local ffprobe boundary validates executable identity and hash, restricts access to local-file protocol, invokes a bounded command, and records normalized inspection provenance. Inspection ≠ interpretation.</p></div>
+      <div><h3>Canonical audio</h3><p>PIR can derive a managed canonical audio artifact from governed local media while preserving bounded execution and derivation lineage. Media artifact ≠ audio artifact; derived audio ≠ transcript.</p></div>
+      <div><h3>Fake-first transcript</h3><p>PIR proves the transcription corridor fake-first before granting a real local model authority to run. The accepted 337-test baseline covers deterministic fake execution, timed-segment validation, lineage, and bounded failure handling.</p></div>
+      <div><h3>Real-ASR boundary</h3><p>Real local model execution, real ASR adapter, and real ASR canary are not implemented or authorized at this checkpoint. Model output ≠ truth; transcript artifact ≠ claim assessment.</p></div>
+    </div>
+    <div class="note">
+      <p><b>Read access ≠ decision authority ≠ mutation authority.</b> The local workbench is limited to 127.0.0.1, SQLite read-only mode with query_only=ON, and GET / HEAD routes; it has no mutation routes, remote mode, background activity, or automatic database initialization or migration.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="proof" aria-labelledby="proof-h">
+    <h2 id="proof-h">Real-model proof</h2>
+    <p class="sec__claim">A bounded test showed value without surrendering the decision boundary.</p>
+    <dl class="stats">
+      <div><dt>Frozen live fixtures completed</dt><dd>5 / 5</dd></div>
+      <div><dt>Evidence records and ClaimEvidence relationships</dt><dd>5</dd></div>
+      <div><dt>SUPPORTS / CONTEXTUALIZES</dt><dd>4 + 1</dd></div>
+      <div><dt>Retries, fallbacks, second queries, or ClaimAssessment mutations</dt><dd>0</dd></div>
+    </dl>
+    <div class="prose">
+      <p>V008 used five frozen public-safe synthetic fixtures. The hosted model returned five structured responses across five calls with no retries, yielding six valid CandidateClaims. All final candidates passed the unchanged production validator.</p>
+    </div>
+    <div class="items">
+      <div><h3>Exact grounding</h3><p>Supporting excerpts had to match their attested source segments exactly and uniquely. PIR derived offsets deterministically; no fuzzy quote repair was allowed.</p></div>
+      <div><h3>Human review</h3><p>Five candidates were accepted. “Best option for everyone.” was rejected, showing that valid structured output is not automatically approved knowledge.</p></div>
+      <div><h3>Bounded cost</h3><p>$0.002041 of hosted-model spend was reconciled against a one-time $0.05 experiment ceiling.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="correction" aria-labelledby="correction-h">
+    <h2 id="correction-h">Failure → correction</h2>
+    <p class="sec__claim">Observability exposed a contract mismatch; validation did not get weaker.</p>
+    <ol class="flow" aria-label="Versions">
+      <li>V006<small>Inference worked; safe diagnostics were insufficient.</small></li>
+      <li>V007<small>Observability revealed the model was being asked to generate PIR-owned fields.</small></li>
+      <li>V008<small>The model generated semantic content; PIR retained identity, offsets, enum constraints, and validation.</small></li>
+    </ol>
+    <div class="note"><p>The production validator was not weakened to accommodate the provider integration.</p></div>
+  </section>
+
+  <section class="sec" id="control" aria-labelledby="control-h">
+    <h2 id="control-h">Provenance + control</h2>
+    <p class="sec__claim">Decision integrity depends on the boundaries around the model.</p>
+    <div class="items">
+      <div><h3>Evidence integrity</h3><p>Claim and evidence remain separate; source excerpts are grounded before review.</p></div>
+      <div><h3>Deterministic controls</h3><p>System-owned identity, accepted constraints, offsets, and validation remain outside model discretion.</p></div>
+      <div><h3>Human authority</h3><p>Every valid CandidateClaim requires ACCEPT, EDIT_AND_ACCEPT, REJECT, or DEFER.</p></div>
+      <div><h3>Bounded execution</h3><p>Privacy, egress, and experiment-level spend controls constrain the validation harness.</p></div>
+    </div>
+  </section>
+
+  <section class="sec" id="role" aria-labelledby="role-h">
+    <h2 id="role-h">Matthew’s role</h2>
+    <p class="sec__claim">Designing the authority model, not presenting model output as authority.</p>
+    <div class="prose">
+      <p>Matthew designed the refinery’s operating model, provenance and authority boundaries, deterministic validation strategy, provider/system contract, and real-model value test; directed bounded implementation and failure investigation; and retained human authority over promotion of model proposals into durable claims.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="boundary" aria-labelledby="boundary-h">
+    <h2 id="boundary-h">Boundary</h2>
+    <p class="sec__claim">Bounded evidence, not a production AI platform claim.</p>
+    <div class="twolists">
+      <div>
+        <h3>What the test supports</h3>
+        <ul>
+          <li>Grounded CandidateClaim proposals from five synthetic fixtures</li>
+          <li>Deterministic validation and explicit human review</li>
+          <li>Experiment-level cost control and a bounded injection fixture</li>
+        </ul>
+      </div>
+      <div class="is-no">
+        <h3>What it does not prove</h3>
+        <ul>
+          <li>Autonomous research or automatic fact verification</li>
+          <li>Routine hosted inference, enterprise deployment, or full evidence adjudication</li>
+          <li>General prompt-injection resistance or production operating cost</li>
+        </ul>
+      </div>
+    </div>
+    <div class="prose">
+      <p>The bounded synthetic injection fixture passed without changing tool access, routing, authority, privacy, spend, or schema behavior. It is not a claim of general injection immunity.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="evidence" aria-labelledby="evidence-h">
+    <h2 id="evidence-h">Public evidence</h2>
+    <p class="sec__claim">Inspect the curated interpretation.</p>
+    <div class="prose">
+      <p>The canonical implementation remains private. These public surfaces document bounded proof and its limits without exposing operational records.</p>
+    </div>
+    <div class="evidence">
+      {evidence.map((e) => <a href={e.href} rel="noopener"><b>{e.label}</b><span>Work samples repository on GitHub</span></a>)}
+    </div>
+  </section>
+</Case>

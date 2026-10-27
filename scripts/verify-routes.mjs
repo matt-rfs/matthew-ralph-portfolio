@@ -5,7 +5,9 @@ const artifacts = [
   "dist/work/job-opportunity-engine/index.html",
   "dist/work/response-flow-systems/index.html",
   "dist/work/personal-intelligence-refinery/index.html",
-  "dist/work/ai-systems-reliability-lab/index.html"
+  "dist/work/ai-systems-reliability-lab/index.html",
+  "dist/ai/index.html",
+  "dist/enablement/index.html"
 ];
 
 const failures = artifacts.flatMap((artifact) => {
