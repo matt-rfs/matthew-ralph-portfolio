@@ -410,6 +410,8 @@ export const heroFixes: { problem: string; num: string; result: string; role: st
 
 export const contact = {
   email: 'sales.success@gmail.com',
+  // every "Compare notes for 15 minutes" button: a 15-minute Calendly event (Matthew, 2026-10-27)
+  booking: 'https://calendly.com/sales-success_matt_ralph/meet-and-greet-with-matt-sig',
   linkedin: 'https://www.linkedin.com/in/salessuccess/',
   github: 'https://github.com/matt-rfs/matthew-ralph-work-samples',
   location: 'Alameda, California',

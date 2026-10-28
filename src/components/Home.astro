@@ -78,7 +78,7 @@ const afterTour = door.workFirst ? '#answers' : '#work';
         </dl>
         <div class="hero__actions">
           <a class="btn btn--light" href={href('/Matthew_Ralph_Resume.pdf')} download>Download résumé</a>
-          <a class="hero__link" href={`mailto:${contact.email}?subject=${encodeURIComponent('Comparing notes')}`}>Compare notes for 15 minutes</a>
+          <a class="hero__link" href={contact.booking} rel="noopener">Compare notes for 15 minutes</a>
         </div>
       </div>
       <figure class="hero__figure">
@@ -122,7 +122,7 @@ const afterTour = door.workFirst ? '#answers' : '#work';
       <div class="pitch__cta">
         <p class="pitch__invite">If one sounds like your team, I’d like to hear how it shows up for you.</p>
         <p class="pitch__actions">
-          <a class="btn btn--solid" href={`mailto:${contact.email}?subject=${encodeURIComponent('Comparing notes')}`}>Compare notes for 15 minutes</a>
+          <a class="btn btn--solid" href={contact.booking} rel="noopener">Compare notes for 15 minutes</a>
           <a class="pitch__link" href={href('/Matthew_Ralph_Resume.pdf')} download>Download résumé</a>
         </p>
       </div>
@@ -169,7 +169,7 @@ const afterTour = door.workFirst ? '#answers' : '#work';
         <h2 class="beat__title beat__title--big">Your team is the next layer.</h2>
         <p class="beat__note">If you’re building a team that needs to perform, let’s talk.</p>
         <div class="hero__actions">
-          <a class="btn btn--light" href={`mailto:${contact.email}?subject=${encodeURIComponent('Comparing notes')}`}>Compare notes for 15 minutes</a>
+          <a class="btn btn--light" href={contact.booking} rel="noopener">Compare notes for 15 minutes</a>
           <a class="hero__link" href={href('/Matthew_Ralph_Resume.pdf')} download>Download résumé</a>
           <a class="hero__link" href={contact.linkedin} rel="noopener">LinkedIn</a>
         </div>
