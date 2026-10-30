@@ -156,18 +156,18 @@ export const roles: Role[] = [
     id: 'vessel-brand',
     skill: 'Leading a sales team',
     cardTitle: 'Director of Sales, Vessel Brand',
-    cardProof: '15 AEs; deal size +35%',
+    cardProof: 'Team of 15; deal size +35%',
     short: 'Director of Sales',
     title: 'Director of Sales',
     org: 'Vessel Brand',
     dates: 'May 2021 – Mar 2023',
     years: '2021–2023',
     tint: '143, 205, 180',
-    figure: '15 AEs, deal size +35%',
+    figure: 'Team of 15, deal size +35%',
     beats: [
       'New product lines launching, a $2M+ book of SMB accounts on annual renewals, and a sales team that needed consistent discovery and a clear value story.',
       'Drove consultative discovery, account planning and expansion conversations grounded in each customer’s goals, and coached the team on pipeline routines, product launches and account execution.',
-      '15 quota-carrying account executives who reported to me, each carrying about $60K in monthly quota. I owned hiring, goals, coaching, reviews and compensation.',
+      'A team of 15 who reported to me, mostly account executives plus a few BDMs; each AE carried about $60K in monthly quota. I owned hiring, goals, coaching, reviews and compensation.',
       'Average deal size up about 35%, and the team hit quota in about 88% of months. I also managed a $2M+ portfolio of about 15–20 SMB accounts myself.',
     ],
     numbers: [
@@ -278,7 +278,7 @@ export const projects: Project[] = [
     slug: 'job-opportunity-engine',
     name: 'Job Opportunity Engine',
     short: 'JOE',
-    line: 'Weighs job openings consistently and drafts only claims I can prove. I approve everything.',
+    line: 'Scores every job opening the same way and is built to draft only from claims I can prove, with my approval. Tested, not yet run live.',
     status: 'Private Python and SQLite system',
     proof: '222 of 222 tests passing',
     evidence: { label: 'Validation snapshot on GitHub', href: 'https://github.com/matt-rfs/matthew-ralph-work-samples/blob/main/job-opportunity-engine/validation-snapshot.md' },
@@ -337,7 +337,7 @@ export const lenses = [
     proof: [
       'Enabled and coached 30+ BDMs, in an audience of about 60, inside a program tied to 40% higher conversion and 30% faster ramp.',
       'Wrote the playbooks and ran recurring training, one-to-one coaching and the operating cadence behind them.',
-      'Led 15 quota-carrying account executives at Vessel Brand; the team hit quota in about 88% of months.',
+      'Led a team of 15 at Vessel Brand, mostly account executives; the team hit quota in about 88% of months.',
     ],
     read: [
       { label: 'Visiativ: playbooks, coaching and the AI step', href: '#visiativ' },
@@ -368,7 +368,7 @@ export const lenses = [
     lit: ['right-choice', 'vessel-brand', 'visiativ'],
     need: 'For teams that need someone to lead people and own the number.',
     proof: [
-      'Director of Sales at Vessel Brand: 15 quota-carrying account executives, about $60K monthly quota each; the team hit quota in about 88% of months.',
+      'Director of Sales at Vessel Brand: a team of 15, mostly account executives carrying about $60K in monthly quota each; the team hit quota in about 88% of months.',
       'Average deal size up about 35%, while personally managing a $2M+ account portfolio.',
       'Co-founded and ran a company that grew to 56 people, and won back customers lost to competitors within one to three months.',
     ],
@@ -402,7 +402,7 @@ export const profile = {
 // then the number that shows it was solved. Same claims and scopes as the tour and "Sound familiar?". Each points at
 // the layer (role) it came from: hovering or focusing it lifts that layer out of the hero's stack; clicking opens its story.
 export const heroFixes: { problem: string; num: string; result: string; role: string }[] = [
-  { problem: 'Numbers that swing', num: '88%', result: 'of months my 15 AEs hit quota; deal size up\u00a035%', role: 'vessel-brand' },
+  { problem: 'Numbers that swing', num: '88%', result: 'of months my team hit quota; deal size up\u00a035%', role: 'vessel-brand' },
   { problem: 'New tools, old habits', num: '5–10', result: 'minutes of research per lead, down from 20\u2060–\u206030', role: 'visiativ' },
   { problem: 'Customers drifting away', num: '+30%', result: 'recurring revenue across ~30 B2B accounts', role: 'apex-labs' },
   { problem: 'Starting from zero', num: '56', result: 'people in a company I co‑founded; ~90% of clients kept', role: 'right-choice' },
@@ -425,6 +425,7 @@ export type Moment = {
   num: string;
   line: string;
   who: string; // title, company · years
+  also?: string; // a role held at the same time, so every layer in the dial is named in a chapter
 };
 export const moments: Moment[] = [
   {
@@ -440,6 +441,7 @@ export const moments: Moment[] = [
     num: '~$750K',
     line: 'a month in sales, advising investors on returns, financing and risk.',
     who: 'Realtor, Ralph Realty · part-time, alongside · 2010–2020',
+    also: 'Also alongside: Assistant / Finance Manager, Wasatch Property Management · 2010–2013 · unpaid rent down ~5–8%',
   },
   {
     role: 'apex-labs',
@@ -452,7 +454,7 @@ export const moments: Moment[] = [
     role: 'vessel-brand',
     skill: 'Leading a sales team',
     num: '+35%',
-    line: 'average deal size. 15 account executives; the team hit quota in about 88% of months.',
+    line: 'average deal size. A team of 15, mostly AEs; it hit quota in about 88% of months.',
     who: 'Director of Sales, Vessel Brand · 2021–2023',
   },
   {
@@ -553,7 +555,7 @@ export const pitch: { problem: string; insight: string; proof: string; story: st
   {
     problem: 'The talent is there, but the numbers swing month to month.',
     insight: 'Consistency comes from rhythm, not pressure: the same discovery, planning and coaching, every week.',
-    proof: 'My 15 AEs hit quota in about 88% of months, and average deal size grew 35%.',
+    proof: 'My team of 15 hit quota in about 88% of months, and average deal size grew 35%.',
     story: 'vessel-brand',
   },
   {
@@ -596,7 +598,7 @@ export const frontDoors: Record<'general' | 'ai' | 'enablement', FrontDoor> = {
   general: {
     path: '/',
     title: 'Matthew Ralph: building teams that perform',
-    description: 'I build teams that perform: a company grown to 56 people, a 15-AE sales team, 30+ BDMs coached. Now adding AI as a hands-on skill.',
+    description: 'I build teams that perform: a company grown to 56 people, a 15-person sales team, 30+ BDMs coached. Now adding AI as a hands-on skill.',
     ogTitle: 'I build teams that perform.',
     ogDescription: 'And I keep adding skills that help them. The newest one is AI.',
     lanes: profile.lanes,
@@ -605,7 +607,7 @@ export const frontDoors: Record<'general' | 'ai' | 'enablement', FrontDoor> = {
     fixes: heroFixes,
     pitch,
     answers: ask('path', 'ninety', 'coaching', 'direct', 'push-ai', 'technical', 'gap', 'start'),
-    labLede: 'Four systems, built on my own time since 2024.',
+    labLede: 'Four systems, built on my own time in 2026.',
   },
   ai: {
     path: '/ai/',
@@ -625,7 +627,7 @@ export const frontDoors: Record<'general' | 'ai' | 'enablement', FrontDoor> = {
     pitch: [pitch[0], pitch[2], pitch[1], pitch[3]],
     answers: ask('ai-approach', 'technical', 'ninety', 'path', 'coaching', 'direct', 'gap', 'start'),
     workFirst: true,
-    labLede: 'Four systems, built hands-on since 2024. Each has a full case study.',
+    labLede: 'Four systems, built hands-on in 2026. Each has a full case study.',
   },
   enablement: {
     path: '/enablement/',
@@ -644,6 +646,6 @@ export const frontDoors: Record<'general' | 'ai' | 'enablement', FrontDoor> = {
     ],
     pitch: [pitch[2], pitch[0], pitch[1], pitch[3]],
     answers: ask('enable-method', 'tools', 'ninety', 'coaching', 'direct', 'path', 'push-ai', 'technical', 'gap', 'start'),
-    labLede: 'Four systems, built on my own time since 2024.',
+    labLede: 'Four systems, built on my own time in 2026.',
   },
 };

@@ -126,7 +126,7 @@ function layer(id: string, g: G) {
       break;
     }
     case 'vessel-brand': {
-      // sub-dial at three: 15 account executives around the person coaching them
+      // sub-dial at three: a team of 15 (mostly account executives) around the person coaching them
       const s = SUB.right;
       circle(g, s.x, s.y, SUB_R + 6, ICE(0.28), 1.2);
       for (let k = 0; k < 15; k++) {
@@ -188,7 +188,7 @@ const CALLOUT: Record<string, { to: [number, number]; side: 'l' | 'r'; y: number
   'ralph-realty': { to: [C.x + 392 * Math.cos(-Math.PI / 5), C.y + 392 * Math.sin(-Math.PI / 5)], side: 'r', y: 110, lines: ['THE FINANCIAL CASE', '~$750K A MONTH'] },
   wasatch: { to: [C.x - 303 * Math.cos(Math.PI / 6), C.y + 303 * Math.sin(Math.PI / 6)], side: 'l', y: 660, lines: ['250 UNITS', '92–95% OCCUPIED'] },
   'apex-labs': { to: [SUB.left.x - SUB_R, SUB.left.y], side: 'l', y: 400, lines: ['~30 ACCOUNTS', '+30% RECURRING'] },
-  'vessel-brand': { to: [SUB.right.x + SUB_R, SUB.right.y], side: 'r', y: 400, lines: ['15 AES', '+35% DEAL SIZE'] },
+  'vessel-brand': { to: [SUB.right.x + SUB_R, SUB.right.y], side: 'r', y: 400, lines: ['TEAM OF 15', '+35% DEAL SIZE'] },
   visiativ: { to: [SUB.low.x + SUB_R * 0.7, SUB.low.y + SUB_R * 0.7], side: 'r', y: 680, lines: ['RESEARCH PER LEAD', '20–30 → 5–10 MIN'] },
   'ai-systems': { to: [C.x + 18, C.y - 18], side: 'r', y: 130, lines: ['THE MECHANISM', 'STILL BUILDING'] },
 };

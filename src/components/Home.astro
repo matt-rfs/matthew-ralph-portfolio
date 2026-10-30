@@ -153,6 +153,7 @@ const afterTour = door.workFirst ? '#answers' : '#work';
             </p>
             <p class="moment__line">{m.line}</p>
             <p class="moment__who">{m.who}</p>
+            {m.also && <p class="moment__who moment__also">{m.also}</p>}
             <button type="button" class="moment__more" data-story={m.role}>
               Read the story
             </button>

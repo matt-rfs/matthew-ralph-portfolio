@@ -301,24 +301,6 @@ button {
   outline-color: var(--thread-deep);
 }
 
-/* ═══════════════ Story: hero + chapters, with the card stack pinned beside them ═══════════════ */
-.story {
-  display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
-  gap: 0 40px;
-  width: min(100% - 2 * var(--gutter), var(--max));
-  margin-inline: auto;
-}
-.story__text {
-  grid-column: 1;
-  grid-row: 1;
-  min-width: 0;
-}
-.story__stage {
-  grid-column: 2;
-  grid-row: 1;
-  position: relative;
-}
 /* Hero: who, the claim, the proof, then how to reach me. The stack beside it carries the roles. */
 .hero {
   min-height: 100vh;
@@ -3325,12 +3307,6 @@ html:not(.js) .lead__rows b {
   html {
     scroll-padding-top: calc(var(--nav-h) + 80px);
   }
-  .story {
-    display: block;
-  }
-  .story__stage {
-    display: none;
-  }
   .hero {
     min-height: 0;
     padding: calc(var(--nav-h) + 18px) 0 24px;
@@ -4213,6 +4189,9 @@ html.studio-live .fade--to-dark {
   font-size: 0.86rem;
   line-height: 1.45;
   color: var(--on-deep-3);
+}
+.moment__also {
+  margin-top: 4px;
 }
 .moment__more {
   margin-top: 22px;
